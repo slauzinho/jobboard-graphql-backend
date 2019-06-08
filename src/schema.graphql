@@ -1,20 +1,11 @@
 type Query {
-  feed: [Post!]!
-  drafts: [Post!]!
-  post(id: ID!): Post
   me: User
+  jobs: [Job]!
 }
 
 type Mutation {
-  signup(email: String!, password: String!, name: String!): AuthPayload!
+  signup(email: String!, password: String!): AuthPayload!
   login(email: String!, password: String!): AuthPayload!
-  createDraft(title: String!, content: String!): Post!
-  publish(id: ID!): Post!
-  deletePost(id: ID!): Post!
-}
-
-type Subscription {
-  feedSubscription: Post
 }
 
 type AuthPayload {
@@ -25,14 +16,23 @@ type AuthPayload {
 type User {
   id: ID!
   email: String!
-  name: String!
-  posts: [Post!]!
 }
 
-type Post {
+type City {
   id: ID!
-  published: Boolean!
+  lat: Float!
+  lng: Float!
+  name: String!
+  district: String!
+}
+
+type Job {
+  slug: String!
   title: String!
-  content: String!
-  author: User!
+  url: String
+  company: String!
+  description: String!
+  city: City!
+  creator: User!
+  published_at: String!
 }

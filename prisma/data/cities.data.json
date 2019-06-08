@@ -1,0 +1,807 @@
+[
+  {
+    "district": "Santarém",
+    "lat": 39.4621054,
+    "name": "Abrantes",
+    "lng": -8.1986484
+  },
+  {
+    "district": "Lisboa",
+    "lat": 38.9022048,
+    "name": "Alverca do Ribatejo",
+    "lng": -9.039742700000033
+  },
+  {
+    "district": "Santarém",
+    "lat": 39.2075584,
+    "name": "Almeirim",
+    "lng": -8.625918800000022
+  },
+  {
+    "district": "Setúbal",
+    "lat": 38.6765238,
+    "name": "Almada",
+    "lng": -9.165104700000029
+  },
+  {
+    "district": "Braga",
+    "lat": 41.5320504,
+    "name": "Barcelos",
+    "lng": -8.619052499999952
+  },
+  {
+    "district": "Porto",
+    "lat": 41.26963569999999,
+    "name": "Amarante",
+    "lng": -8.082648800000015
+  },
+  {
+    "district": "Açores",
+    "lat": 38.6635375,
+    "name": "Angra do Heroísmo",
+    "lng": -27.229396899999983
+  },
+  {
+    "district": "Lisboa",
+    "lat": 38.7577603,
+    "name": "Amadora",
+    "lng": -9.224547400000006
+  },
+  {
+    "district": "Aveiro",
+    "lat": 40.440347,
+    "name": "Anadia",
+    "lng": -8.435250499999938
+  },
+  {
+    "district": "Aveiro",
+    "lat": 40.6405055,
+    "name": "Aveiro",
+    "lng": -8.65375389999997
+  },
+  {
+    "district": "Leiria",
+    "lat": 39.54866699999999,
+    "name": "Alcobaça",
+    "lng": -8.97964920000004
+  },
+  {
+    "district": "Setúbal",
+    "lat": 38.3725007,
+    "name": "Alcácer do Sal",
+    "lng": -8.511008299999958
+  },
+  {
+    "district": "Faro",
+    "lat": 37.0890719,
+    "name": "Albufeira",
+    "lng": -8.247879600000033
+  },
+  {
+    "district": "Santarém",
+    "lat": 39.4611239,
+    "name": "Entroncamento",
+    "lng": -8.478758999999968
+  },
+  {
+    "district": "Aveiro",
+    "lat": 40.42,
+    "name": "Albergaria-a-Velha",
+    "lng": -8.29
+  },
+  {
+    "district": "Faro",
+    "lat": 39.4611239,
+    "name": "Vila Real de Santo António",
+    "lng": -8.478758999999968
+  },
+  {
+    "district": "Viana do Castelo",
+    "name": "Valença",
+    "lat": 42.02688939999999,
+    "lng": -8.642119500000035
+  },
+  {
+    "district": "Braga",
+    "lat": 41.3764108,
+    "name": "Vizela",
+    "lng": -8.309834799999976
+  },
+  {
+    "district": "Viseu",
+    "lat": 40.6565861,
+    "name": "Viseu",
+    "lng": -7.912471200000027
+  },
+  {
+    "district": "Vila Real",
+    "lat": 41.3010351,
+    "name": "Vila Real",
+    "lng": -7.742235400000027
+  },
+  {
+    "district": "Porto",
+    "name": "Vila Nova de Gaia",
+    "lat": 41.1238759,
+    "lng": -8.61178510000002
+  },
+  {
+    "district": "Guarda",
+    "lat": 41.0822466,
+    "name": "Vila Nova de Foz Côa",
+    "lng": -7.140359799999942
+  },
+  {
+    "district": "Madeira",
+    "lat": 33.0603333,
+    "name": "Vila Baleira",
+    "lng": -16.333870299999944
+  },
+  {
+    "district": "Viana do Castelo",
+    "lat": 41.6918046,
+    "name": "Viana do Castelo",
+    "lng": -8.834450999999945
+  },
+  {
+    "district": "Évora",
+    "lat": 38.6540819,
+    "name": "Vendas Novas",
+    "lng": -8.550128299999983
+  },
+  {
+    "district": "Vila Real",
+    "lat": 41.3010351,
+    "name": "Valpaços",
+    "lng": -7.742235400000027
+  },
+  {
+    "district": "Porto",
+    "lat": 41.188745,
+    "name": "Valongo",
+    "lng": -8.498341100000061
+  },
+  {
+    "district": "Braga",
+    "lat": 41.41112589999999,
+    "name": "Vila Nova de Famalicão",
+    "lng": -8.52373190000003
+  },
+  {
+    "district": "Lisboa",
+    "lat": 38.9549771,
+    "name": "Vila Franca de Xira",
+    "lng": -8.988958899999943
+  },
+  {
+    "district": "Porto",
+    "lat": 41.3517302,
+    "name": "Vila do Conde",
+    "lng": -8.747861899999975
+  },
+  {
+    "district": "Aveiro",
+    "lat": 40.8429643,
+    "name": "Vale de Cambra",
+    "lng": -8.39561679999997
+  },
+  {
+    "district": "Guarda",
+    "lat": 40.7787604,
+    "name": "Trancoso",
+    "lng": -7.349144199999955
+  },
+  {
+    "district": "Santarém",
+    "lat": 39.4790062,
+    "name": "Torres Novas",
+    "lng": -8.540103000000045
+  },
+  {
+    "district": "Porto",
+    "lat": 41.3389988,
+    "name": "Trofa",
+    "lng": -8.559548800000016
+  },
+  {
+    "district": "Lisboa",
+    "lat": 39.0910112,
+    "name": "Torres Vedras",
+    "lng": -9.25975219999998
+  },
+  {
+    "district": "Viseu",
+    "lat": 40.5168388,
+    "name": "Tondela",
+    "lng": -8.080047100000002
+  },
+  {
+    "district": "Santarém",
+    "lat": 39.6053819,
+    "name": "Tomar",
+    "lng": -8.40431250000006
+  },
+  {
+    "district": "Setúbal",
+    "lat": 38.6410676,
+    "name": "Seixal",
+    "lng": -9.097499999999968
+  },
+  {
+    "district": "Faro",
+    "lat": 37.1889976,
+    "name": "Silves",
+    "lng": -8.441205099999934
+  },
+  {
+    "district": "Viseu",
+    "lat": 41.0174461,
+    "name": "Tarouca",
+    "lng": -7.775003599999991
+  },
+  {
+    "district": "Faro",
+    "name": "Tavira",
+    "lat": 37.1335906,
+    "lng": -7.643001899999945
+  },
+  {
+    "district": "Setúbal",
+    "lat": 38.5254047,
+    "name": "Setúbal",
+    "lng": -8.89409999999998
+  },
+  {
+    "district": "Beja",
+    "lat": 37.94434469999999,
+    "name": "Serpa",
+    "lng": -7.597874300000058
+  },
+  {
+    "district": "Setúbal",
+    "lat": 37.9571555,
+    "name": "Sines",
+    "lng": -8.860890700000027
+  },
+  {
+    "district": "Viseu",
+    "lat": 40.7597932,
+    "name": "São Pedro do Sul",
+    "lng": -8.064075799999955
+  },
+  {
+    "district": "Aveiro",
+    "lat": 40.90052379999999,
+    "name": "São João da Madeira",
+    "lng": -8.490671600000042
+  },
+  {
+    "district": "Porto",
+    "lat": 41.3431376,
+    "name": "Santo Tirso",
+    "lng": -8.473807800000031
+  },
+  {
+    "district": "Santarém",
+    "lat": 39.2848804,
+    "name": "Santarém",
+    "lng": -8.704074999999989
+  },
+  {
+    "district": "Setúbal",
+    "lat": 37.9650235,
+    "name": "Santiago do Cacém",
+    "lng": -8.528161299999965
+  },
+  {
+    "district": "Guarda",
+    "lat": 40.4161238,
+    "name": "Seia",
+    "lng": -7.708851200000026
+  },
+  {
+    "district": "Viseu",
+    "lat": 40.39305909999999,
+    "name": "Santa Comba Dão",
+    "lng": -8.150243300000056
+  },
+  {
+    "district": "Lisboa",
+    "lat": 38.7943044,
+    "name": "Sacavém",
+    "lng": -9.105510800000047
+  },
+  {
+    "district": "Guarda",
+    "lat": 40.3793416,
+    "name": "Sabugal",
+    "lng": -7.049844200000052
+  },
+  {
+    "district": "Madeira",
+    "lat": 32.8018761,
+    "name": "Santana",
+    "lng": -16.879791999999952
+  },
+  {
+    "district": "Madeira",
+    "lat": 32.6892815,
+    "name": "Santa Cruz",
+    "lng": -16.7907398
+  },
+  {
+    "district": "Aveiro",
+    "lat": 40.926794,
+    "name": "Santa Maria da Feira",
+    "lng": -8.548324699999966
+  },
+  {
+    "district": "Santarém",
+    "lat": 39.3393698,
+    "name": "Rio Maior",
+    "lng": -8.935573699999964
+  },
+  {
+    "district": "Açores",
+    "lat": 37.8210369,
+    "name": "Ribeira Grande",
+    "lng": -25.51481369999999
+  },
+  {
+    "district": "Évora",
+    "lat": 38.4252756,
+    "name": "Reguengos de Monsaraz",
+    "lng": -7.534369999999967
+  },
+  {
+    "district": "Lisboa",
+    "lat": 38.7573981,
+    "name": "Queluz",
+    "lng": -9.258745299999987
+  },
+  {
+    "district": "Açores",
+    "lat": 38.7339162,
+    "name": "Praia da Vitória",
+    "lng": -27.064697600000045
+  },
+  {
+    "district": "Faro",
+    "lat": 37.13617,
+    "name": "Portimão",
+    "lng": -8.537692600000014
+  },
+  {
+    "district": "Portalegre",
+    "lat": 39.2967086,
+    "name": "Portalegre",
+    "lng": -7.4284754999999905
+  },
+  {
+    "district": "Porto",
+    "lat": 41.3803685,
+    "name": "Pôvoa de Varzim",
+    "lng": -8.760929400000009
+  },
+  {
+    "district": "Porto",
+    "name": "Porto",
+    "lat": 41.1579438,
+    "lng": -8.629105299999992
+  },
+  {
+    "district": "Porto",
+    "lat": 41.2053076,
+    "name": "Paredes",
+    "lng": -8.33048610000003
+  },
+  {
+    "district": "Guarda",
+    "lat": 40.778586,
+    "name": "Pinhel",
+    "lng": -7.1359376999999995
+  },
+  {
+    "district": "Açores",
+    "lat": 37.7394207,
+    "name": "Ponta Delgada",
+    "lng": -25.668672499999957
+  },
+  {
+    "district": "Leiria",
+    "lat": 39.9167748,
+    "name": "Pombal",
+    "lng": -8.632141499999989
+  },
+  {
+    "district": "Leiria",
+    "lat": 39.3603291,
+    "name": "Peniche",
+    "lng": -9.387621999999965
+  },
+  {
+    "district": "Aveiro",
+    "lat": 40.5162761,
+    "name": "Oliveira do Bairro",
+    "lng": -8.497225200000003
+  },
+  {
+    "district": "Aveiro",
+    "lat": 40.8387294,
+    "name": "Oliveira de Azeméis",
+    "lng": -8.476976299999933
+  },
+  {
+    "district": "Porto",
+    "lat": 41.2785916,
+    "name": "Paços de Ferreira",
+    "lng": -8.37213810000003
+  },
+  {
+    "district": "Aveiro",
+    "lat": 40.8596399,
+    "name": "Ovar",
+    "lng": -8.62533129999997
+  },
+  {
+    "district": "Santarém",
+    "lat": 39.6564974,
+    "name": "Ourém",
+    "lng": -8.577340800000002
+  },
+  {
+    "district": "Coimbra",
+    "lat": 40.3608614,
+    "name": "Oliveira do Hospital",
+    "lng": -7.862203200000067
+  },
+  { "district": "Lisboa", "lat": 38.48, "name": "Odivelas", "lng": -0.1 },
+  {
+    "district": "Faro",
+    "lat": 38.795369,
+    "name": "Olhão da Restauração",
+    "lng": -9.185179999999946
+  },
+  {
+    "district": "Setúbal",
+    "lat": 38.7054501,
+    "name": "Montijo",
+    "lng": -8.97614939999994
+  },
+  {
+    "district": "Beja",
+    "lat": 38.1314891,
+    "name": "Moura",
+    "lng": -7.308457099999941
+  },
+  {
+    "district": "Évora",
+    "lat": 38.64708,
+    "name": "Montemor-o-Novo",
+    "lng": -8.217864100000043
+  },
+  {
+    "district": "Bragança",
+    "lat": 41.4853545,
+    "name": "Mirandela",
+    "lng": -7.18087109999999
+  },
+  {
+    "district": "Guarda",
+    "lat": 40.9670544,
+    "name": "Mêda",
+    "lng": -7.25959510000007
+  },
+  {
+    "district": "Bragança",
+    "lat": 41.4995412,
+    "name": "Miranda do Douro",
+    "lng": -6.271231100000023
+  },
+  {
+    "district": "Leiria",
+    "lat": 39.7503802,
+    "name": "Marinha Grande",
+    "lng": -8.931805899999972
+  },
+  {
+    "district": "Porto",
+    "lat": 41.1845043,
+    "name": "Marco de Canaveses",
+    "lng": -8.14775510000004
+  },
+  {
+    "district": "Viseu",
+    "lat": 40.6045573,
+    "name": "Mangualde",
+    "lng": -7.763874499999929
+  },
+  {
+    "district": "Aveiro",
+    "lat": 40.378484,
+    "name": "Mealhada",
+    "lng": -8.453571799999963
+  },
+  {
+    "district": "Porto",
+    "lat": 41.1844362,
+    "name": "Matosinhos",
+    "lng": -8.696277499999951
+  },
+  {
+    "district": "Madeira",
+    "lat": 32.7318412,
+    "name": "Machico",
+    "lng": -16.791291
+  },
+  {
+    "district": "Bragança",
+    "lat": 41.5153524,
+    "name": "Macedo de Cavaleiros",
+    "lng": -6.8779925999999705
+  },
+  {
+    "district": "Lisboa",
+    "lat": 38.831549,
+    "name": "Loures",
+    "lng": -9.174109499999986
+  },
+  {
+    "district": "Faro",
+    "lat": 37.1379187,
+    "name": "Loulé",
+    "lng": -8.020216000000005
+  },
+  {
+    "district": "Porto",
+    "lat": 41.3210679,
+    "name": "Lixa",
+    "lng": -8.141669999999976
+  },
+  {
+    "district": "Porto",
+    "lat": 41.2278891,
+    "name": "Maia",
+    "lng": -8.62104899999997
+  },
+  {
+    "district": "Lisboa",
+    "lat": 38.7222524,
+    "name": "Lisboa",
+    "lng": -9.139336599999979
+  },
+  {
+    "district": "Leiria",
+    "lat": 39.74953310000001,
+    "name": "Leiria",
+    "lng": -8.807682999999997
+  },
+  {
+    "district": "Viseu",
+    "lat": 41.0953745,
+    "name": "Lamego",
+    "lng": -7.8123805000000175
+  },
+  {
+    "district": "Faro",
+    "lat": 37.1027881,
+    "name": "Lagos",
+    "lng": -8.67302749999999
+  },
+  {
+    "district": "Faro",
+    "lat": 37.1356176,
+    "name": "Lagoa",
+    "lng": -8.451435899999979
+  },
+  {
+    "district": "Açores",
+    "lat": 37.7451046,
+    "name": "Lagoa",
+    "lng": -25.57207459999995
+  },
+  {
+    "district": "Açores",
+    "lat": 38.5348447,
+    "name": "Horta",
+    "lng": -28.629981199999975
+  },
+  {
+    "district": "Aveiro",
+    "lat": 40.602309,
+    "name": "Ílhavo",
+    "lng": -8.672370999999998
+  },
+  {
+    "district": "Guarda",
+    "lat": 40.5308408,
+    "name": "Guarda",
+    "lng": -7.222142100000042
+  },
+  {
+    "district": "Guarda",
+    "lat": 40.4923318,
+    "name": "Gouveia",
+    "lng": -7.593652600000041
+  },
+  {
+    "district": "Braga",
+    "lat": 41.44253,
+    "name": "Guimarães",
+    "lng": -8.291785699999991
+  },
+  {
+    "district": "Porto",
+    "lat": 41.13955989999999,
+    "name": "Gondomar",
+    "lng": -8.52914229999999
+  },
+  {
+    "district": "Castelo Branco",
+    "lat": 40.137963,
+    "name": "Fundão",
+    "lng": -7.50107730000002
+  },
+  {
+    "district": "Madeira",
+    "lat": 32.6669328,
+    "name": "Funchal",
+    "lng": -16.924055400000043
+  },
+  {
+    "district": "Coimbra",
+    "lat": 40.1521398,
+    "name": "Figueira da Foz",
+    "lng": -8.857582999999977
+  },
+  {
+    "district": "Porto",
+    "lat": 41.367707,
+    "name": "Felgueiras",
+    "lng": -8.195120599999996
+  },
+  {
+    "district": "Santarém",
+    "lat": 39.2848804,
+    "name": "",
+    "lng": -8.704074999999989
+  },
+  {
+    "district": "Braga",
+    "lat": 41.4512581,
+    "name": "Fafe",
+    "lng": -8.17088369999999
+  },
+  {
+    "district": "Faro",
+    "lat": 37.0193548,
+    "name": "Faro",
+    "lng": -7.930439699999965
+  },
+  {
+    "district": "Évora",
+    "lat": 38.571431,
+    "name": "Évora",
+    "lng": -7.913501999999994
+  },
+  {
+    "district": "Évora",
+    "lat": 38.8424149,
+    "name": "Estremoz",
+    "lng": -7.588896299999988
+  },
+  {
+    "district": "Aveiro",
+    "lat": 40.7528385,
+    "name": "Estarreja",
+    "lng": -8.570985599999972
+  },
+  {
+    "district": "Braga",
+    "lat": 41.5309169,
+    "name": "Esposende",
+    "lng": -8.780565199999955
+  },
+  {
+    "district": "Portalegre",
+    "lat": 38.8802788,
+    "name": "Elvas",
+    "lng": -7.163663700000029
+  },
+  {
+    "district": "Castelo Branco",
+    "lat": 40.2804158,
+    "name": "Covilhã",
+    "lng": -7.492240700000025
+  },
+  {
+    "district": "Coimbra",
+    "lat": 40.2033145,
+    "name": "Coimbra",
+    "lng": -8.410257300000012
+  },
+  {
+    "district": "Aveiro",
+    "lat": 41.0071914,
+    "name": "Espinho",
+    "lng": -8.641033200000038
+  },
+  {
+    "district": "Vila Real",
+    "lat": 41.7410586,
+    "name": "Chaves",
+    "lng": -7.4706046000000015
+  },
+  {
+    "district": "Coimbra",
+    "lat": 40.3470015,
+    "name": "Cantanhede",
+    "lng": -8.593346200000042
+  },
+  {
+    "district": "Madeira",
+    "lat": 32.6483117,
+    "name": "Caniço",
+    "lng": -16.835758800000008
+  },
+  {
+    "district": "Madeira",
+    "lat": 32.6610892,
+    "name": "Câmara de Lobos",
+    "lng": -16.986038399999984
+  },
+  {
+    "district": "Leiria",
+    "lat": 39.4048977,
+    "name": "Caldas da Rainha",
+    "lng": -9.135403999999994
+  },
+  {
+    "district": "Castelo Branco",
+    "lat": 39.8031161,
+    "name": "Castelo Branco",
+    "lng": -7.4597724999999855
+  },
+  {
+    "district": "Santarém",
+    "lat": 39.1618427,
+    "name": "Cartaxo",
+    "lng": -8.788643099999945
+  },
+  {
+    "district": "Bragança",
+    "lat": 41.8061131,
+    "name": "Bragança",
+    "lng": -6.756738000000041
+  },
+  {
+    "district": "Braga",
+    "lat": 41.5454486,
+    "name": "Braga",
+    "lng": -8.426507000000015
+  },
+  {
+    "district": "Évora",
+    "lat": 38.8068177,
+    "name": "Borba",
+    "lng": -7.458404999999971
+  },
+  {
+    "district": "Beja",
+    "lat": 38.0153039,
+    "name": "Beja",
+    "lng": -7.8627308000000085
+  },
+  {
+    "district": "Aveiro",
+    "lat": 40.5754246,
+    "name": "Águeda",
+    "lng": -8.446436800000015
+  },
+  {
+    "district": "Setúbal",
+    "lat": 38.6608149,
+    "name": "Barreiro",
+    "lng": -9.079072399999973
+  }
+]

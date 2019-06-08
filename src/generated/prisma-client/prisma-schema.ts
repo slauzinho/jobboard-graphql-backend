@@ -2,7 +2,23 @@
   // Please don't change this file manually but run `prisma generate` to update it.
   // For more information, please read the docs: https://www.prisma.io/docs/prisma-client/
 
-export const typeDefs = /* GraphQL */ `type AggregateUser {
+export const typeDefs = /* GraphQL */ `type AggregateCategory {
+  count: Int!
+}
+
+type AggregateCity {
+  count: Int!
+}
+
+type AggregateJob {
+  count: Int!
+}
+
+type AggregateTag {
+  count: Int!
+}
+
+type AggregateUser {
   count: Int!
 }
 
@@ -10,105 +26,66 @@ type BatchPayload {
   count: Long!
 }
 
-scalar Long
-
-type Mutation {
-  createUser(data: UserCreateInput!): User!
-  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
-  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
-  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
-  deleteUser(where: UserWhereUniqueInput!): User
-  deleteManyUsers(where: UserWhereInput): BatchPayload!
-}
-
-enum MutationType {
-  CREATED
-  UPDATED
-  DELETED
-}
-
-interface Node {
-  id: ID!
-}
-
-type PageInfo {
-  hasNextPage: Boolean!
-  hasPreviousPage: Boolean!
-  startCursor: String
-  endCursor: String
-}
-
-type Query {
-  user(where: UserWhereUniqueInput!): User
-  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
-  usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
-  node(id: ID!): Node
-}
-
-type Subscription {
-  user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
-}
-
-type User {
+type Category {
   id: ID!
   name: String!
 }
 
-type UserConnection {
+type CategoryConnection {
   pageInfo: PageInfo!
-  edges: [UserEdge]!
-  aggregate: AggregateUser!
+  edges: [CategoryEdge]!
+  aggregate: AggregateCategory!
 }
 
-input UserCreateInput {
+input CategoryCreateInput {
   id: ID
   name: String!
 }
 
-type UserEdge {
-  node: User!
+type CategoryEdge {
+  node: Category!
   cursor: String!
 }
 
-enum UserOrderByInput {
+enum CategoryOrderByInput {
   id_ASC
   id_DESC
   name_ASC
   name_DESC
 }
 
-type UserPreviousValues {
+type CategoryPreviousValues {
   id: ID!
   name: String!
 }
 
-type UserSubscriptionPayload {
+type CategorySubscriptionPayload {
   mutation: MutationType!
-  node: User
+  node: Category
   updatedFields: [String!]
-  previousValues: UserPreviousValues
+  previousValues: CategoryPreviousValues
 }
 
-input UserSubscriptionWhereInput {
+input CategorySubscriptionWhereInput {
   mutation_in: [MutationType!]
   updatedFields_contains: String
   updatedFields_contains_every: [String!]
   updatedFields_contains_some: [String!]
-  node: UserWhereInput
-  AND: [UserSubscriptionWhereInput!]
-  OR: [UserSubscriptionWhereInput!]
-  NOT: [UserSubscriptionWhereInput!]
+  node: CategoryWhereInput
+  AND: [CategorySubscriptionWhereInput!]
+  OR: [CategorySubscriptionWhereInput!]
+  NOT: [CategorySubscriptionWhereInput!]
 }
 
-input UserUpdateInput {
+input CategoryUpdateInput {
   name: String
 }
 
-input UserUpdateManyMutationInput {
+input CategoryUpdateManyMutationInput {
   name: String
 }
 
-input UserWhereInput {
+input CategoryWhereInput {
   id: ID
   id_not: ID
   id_in: [ID!]
@@ -137,6 +114,967 @@ input UserWhereInput {
   name_not_starts_with: String
   name_ends_with: String
   name_not_ends_with: String
+  AND: [CategoryWhereInput!]
+  OR: [CategoryWhereInput!]
+  NOT: [CategoryWhereInput!]
+}
+
+input CategoryWhereUniqueInput {
+  id: ID
+  name: String
+}
+
+type City {
+  id: ID!
+  lat: Float!
+  lng: Float!
+  name: String!
+  district: String!
+  jobs(where: JobWhereInput, orderBy: JobOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Job!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type CityConnection {
+  pageInfo: PageInfo!
+  edges: [CityEdge]!
+  aggregate: AggregateCity!
+}
+
+input CityCreateInput {
+  id: ID
+  lat: Float!
+  lng: Float!
+  name: String!
+  district: String!
+  jobs: JobCreateManyWithoutCityInput
+}
+
+input CityCreateOneWithoutJobsInput {
+  create: CityCreateWithoutJobsInput
+  connect: CityWhereUniqueInput
+}
+
+input CityCreateWithoutJobsInput {
+  id: ID
+  lat: Float!
+  lng: Float!
+  name: String!
+  district: String!
+}
+
+type CityEdge {
+  node: City!
+  cursor: String!
+}
+
+enum CityOrderByInput {
+  id_ASC
+  id_DESC
+  lat_ASC
+  lat_DESC
+  lng_ASC
+  lng_DESC
+  name_ASC
+  name_DESC
+  district_ASC
+  district_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type CityPreviousValues {
+  id: ID!
+  lat: Float!
+  lng: Float!
+  name: String!
+  district: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type CitySubscriptionPayload {
+  mutation: MutationType!
+  node: City
+  updatedFields: [String!]
+  previousValues: CityPreviousValues
+}
+
+input CitySubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: CityWhereInput
+  AND: [CitySubscriptionWhereInput!]
+  OR: [CitySubscriptionWhereInput!]
+  NOT: [CitySubscriptionWhereInput!]
+}
+
+input CityUpdateInput {
+  lat: Float
+  lng: Float
+  name: String
+  district: String
+  jobs: JobUpdateManyWithoutCityInput
+}
+
+input CityUpdateManyMutationInput {
+  lat: Float
+  lng: Float
+  name: String
+  district: String
+}
+
+input CityUpdateOneRequiredWithoutJobsInput {
+  create: CityCreateWithoutJobsInput
+  update: CityUpdateWithoutJobsDataInput
+  upsert: CityUpsertWithoutJobsInput
+  connect: CityWhereUniqueInput
+}
+
+input CityUpdateWithoutJobsDataInput {
+  lat: Float
+  lng: Float
+  name: String
+  district: String
+}
+
+input CityUpsertWithoutJobsInput {
+  update: CityUpdateWithoutJobsDataInput!
+  create: CityCreateWithoutJobsInput!
+}
+
+input CityWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  lat: Float
+  lat_not: Float
+  lat_in: [Float!]
+  lat_not_in: [Float!]
+  lat_lt: Float
+  lat_lte: Float
+  lat_gt: Float
+  lat_gte: Float
+  lng: Float
+  lng_not: Float
+  lng_in: [Float!]
+  lng_not_in: [Float!]
+  lng_lt: Float
+  lng_lte: Float
+  lng_gt: Float
+  lng_gte: Float
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  district: String
+  district_not: String
+  district_in: [String!]
+  district_not_in: [String!]
+  district_lt: String
+  district_lte: String
+  district_gt: String
+  district_gte: String
+  district_contains: String
+  district_not_contains: String
+  district_starts_with: String
+  district_not_starts_with: String
+  district_ends_with: String
+  district_not_ends_with: String
+  jobs_every: JobWhereInput
+  jobs_some: JobWhereInput
+  jobs_none: JobWhereInput
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [CityWhereInput!]
+  OR: [CityWhereInput!]
+  NOT: [CityWhereInput!]
+}
+
+input CityWhereUniqueInput {
+  id: ID
+  name: String
+}
+
+scalar DateTime
+
+type Job {
+  id: ID!
+  title: String!
+  url: String
+  company: String!
+  description: String!
+  slug: String!
+  city: City!
+  creator: User!
+  published_at: DateTime
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type JobConnection {
+  pageInfo: PageInfo!
+  edges: [JobEdge]!
+  aggregate: AggregateJob!
+}
+
+input JobCreateInput {
+  id: ID
+  title: String!
+  url: String
+  company: String!
+  description: String!
+  slug: String!
+  city: CityCreateOneWithoutJobsInput!
+  creator: UserCreateOneInput!
+  published_at: DateTime
+}
+
+input JobCreateManyWithoutCityInput {
+  create: [JobCreateWithoutCityInput!]
+  connect: [JobWhereUniqueInput!]
+}
+
+input JobCreateWithoutCityInput {
+  id: ID
+  title: String!
+  url: String
+  company: String!
+  description: String!
+  slug: String!
+  creator: UserCreateOneInput!
+  published_at: DateTime
+}
+
+type JobEdge {
+  node: Job!
+  cursor: String!
+}
+
+enum JobOrderByInput {
+  id_ASC
+  id_DESC
+  title_ASC
+  title_DESC
+  url_ASC
+  url_DESC
+  company_ASC
+  company_DESC
+  description_ASC
+  description_DESC
+  slug_ASC
+  slug_DESC
+  published_at_ASC
+  published_at_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type JobPreviousValues {
+  id: ID!
+  title: String!
+  url: String
+  company: String!
+  description: String!
+  slug: String!
+  published_at: DateTime
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input JobScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  url: String
+  url_not: String
+  url_in: [String!]
+  url_not_in: [String!]
+  url_lt: String
+  url_lte: String
+  url_gt: String
+  url_gte: String
+  url_contains: String
+  url_not_contains: String
+  url_starts_with: String
+  url_not_starts_with: String
+  url_ends_with: String
+  url_not_ends_with: String
+  company: String
+  company_not: String
+  company_in: [String!]
+  company_not_in: [String!]
+  company_lt: String
+  company_lte: String
+  company_gt: String
+  company_gte: String
+  company_contains: String
+  company_not_contains: String
+  company_starts_with: String
+  company_not_starts_with: String
+  company_ends_with: String
+  company_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  slug: String
+  slug_not: String
+  slug_in: [String!]
+  slug_not_in: [String!]
+  slug_lt: String
+  slug_lte: String
+  slug_gt: String
+  slug_gte: String
+  slug_contains: String
+  slug_not_contains: String
+  slug_starts_with: String
+  slug_not_starts_with: String
+  slug_ends_with: String
+  slug_not_ends_with: String
+  published_at: DateTime
+  published_at_not: DateTime
+  published_at_in: [DateTime!]
+  published_at_not_in: [DateTime!]
+  published_at_lt: DateTime
+  published_at_lte: DateTime
+  published_at_gt: DateTime
+  published_at_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [JobScalarWhereInput!]
+  OR: [JobScalarWhereInput!]
+  NOT: [JobScalarWhereInput!]
+}
+
+type JobSubscriptionPayload {
+  mutation: MutationType!
+  node: Job
+  updatedFields: [String!]
+  previousValues: JobPreviousValues
+}
+
+input JobSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: JobWhereInput
+  AND: [JobSubscriptionWhereInput!]
+  OR: [JobSubscriptionWhereInput!]
+  NOT: [JobSubscriptionWhereInput!]
+}
+
+input JobUpdateInput {
+  title: String
+  url: String
+  company: String
+  description: String
+  slug: String
+  city: CityUpdateOneRequiredWithoutJobsInput
+  creator: UserUpdateOneRequiredInput
+  published_at: DateTime
+}
+
+input JobUpdateManyDataInput {
+  title: String
+  url: String
+  company: String
+  description: String
+  slug: String
+  published_at: DateTime
+}
+
+input JobUpdateManyMutationInput {
+  title: String
+  url: String
+  company: String
+  description: String
+  slug: String
+  published_at: DateTime
+}
+
+input JobUpdateManyWithoutCityInput {
+  create: [JobCreateWithoutCityInput!]
+  delete: [JobWhereUniqueInput!]
+  connect: [JobWhereUniqueInput!]
+  set: [JobWhereUniqueInput!]
+  disconnect: [JobWhereUniqueInput!]
+  update: [JobUpdateWithWhereUniqueWithoutCityInput!]
+  upsert: [JobUpsertWithWhereUniqueWithoutCityInput!]
+  deleteMany: [JobScalarWhereInput!]
+  updateMany: [JobUpdateManyWithWhereNestedInput!]
+}
+
+input JobUpdateManyWithWhereNestedInput {
+  where: JobScalarWhereInput!
+  data: JobUpdateManyDataInput!
+}
+
+input JobUpdateWithoutCityDataInput {
+  title: String
+  url: String
+  company: String
+  description: String
+  slug: String
+  creator: UserUpdateOneRequiredInput
+  published_at: DateTime
+}
+
+input JobUpdateWithWhereUniqueWithoutCityInput {
+  where: JobWhereUniqueInput!
+  data: JobUpdateWithoutCityDataInput!
+}
+
+input JobUpsertWithWhereUniqueWithoutCityInput {
+  where: JobWhereUniqueInput!
+  update: JobUpdateWithoutCityDataInput!
+  create: JobCreateWithoutCityInput!
+}
+
+input JobWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  url: String
+  url_not: String
+  url_in: [String!]
+  url_not_in: [String!]
+  url_lt: String
+  url_lte: String
+  url_gt: String
+  url_gte: String
+  url_contains: String
+  url_not_contains: String
+  url_starts_with: String
+  url_not_starts_with: String
+  url_ends_with: String
+  url_not_ends_with: String
+  company: String
+  company_not: String
+  company_in: [String!]
+  company_not_in: [String!]
+  company_lt: String
+  company_lte: String
+  company_gt: String
+  company_gte: String
+  company_contains: String
+  company_not_contains: String
+  company_starts_with: String
+  company_not_starts_with: String
+  company_ends_with: String
+  company_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  slug: String
+  slug_not: String
+  slug_in: [String!]
+  slug_not_in: [String!]
+  slug_lt: String
+  slug_lte: String
+  slug_gt: String
+  slug_gte: String
+  slug_contains: String
+  slug_not_contains: String
+  slug_starts_with: String
+  slug_not_starts_with: String
+  slug_ends_with: String
+  slug_not_ends_with: String
+  city: CityWhereInput
+  creator: UserWhereInput
+  published_at: DateTime
+  published_at_not: DateTime
+  published_at_in: [DateTime!]
+  published_at_not_in: [DateTime!]
+  published_at_lt: DateTime
+  published_at_lte: DateTime
+  published_at_gt: DateTime
+  published_at_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [JobWhereInput!]
+  OR: [JobWhereInput!]
+  NOT: [JobWhereInput!]
+}
+
+input JobWhereUniqueInput {
+  id: ID
+  slug: String
+}
+
+scalar Long
+
+type Mutation {
+  createCategory(data: CategoryCreateInput!): Category!
+  updateCategory(data: CategoryUpdateInput!, where: CategoryWhereUniqueInput!): Category
+  updateManyCategories(data: CategoryUpdateManyMutationInput!, where: CategoryWhereInput): BatchPayload!
+  upsertCategory(where: CategoryWhereUniqueInput!, create: CategoryCreateInput!, update: CategoryUpdateInput!): Category!
+  deleteCategory(where: CategoryWhereUniqueInput!): Category
+  deleteManyCategories(where: CategoryWhereInput): BatchPayload!
+  createCity(data: CityCreateInput!): City!
+  updateCity(data: CityUpdateInput!, where: CityWhereUniqueInput!): City
+  updateManyCities(data: CityUpdateManyMutationInput!, where: CityWhereInput): BatchPayload!
+  upsertCity(where: CityWhereUniqueInput!, create: CityCreateInput!, update: CityUpdateInput!): City!
+  deleteCity(where: CityWhereUniqueInput!): City
+  deleteManyCities(where: CityWhereInput): BatchPayload!
+  createJob(data: JobCreateInput!): Job!
+  updateJob(data: JobUpdateInput!, where: JobWhereUniqueInput!): Job
+  updateManyJobs(data: JobUpdateManyMutationInput!, where: JobWhereInput): BatchPayload!
+  upsertJob(where: JobWhereUniqueInput!, create: JobCreateInput!, update: JobUpdateInput!): Job!
+  deleteJob(where: JobWhereUniqueInput!): Job
+  deleteManyJobs(where: JobWhereInput): BatchPayload!
+  createTag(data: TagCreateInput!): Tag!
+  updateTag(data: TagUpdateInput!, where: TagWhereUniqueInput!): Tag
+  updateManyTags(data: TagUpdateManyMutationInput!, where: TagWhereInput): BatchPayload!
+  upsertTag(where: TagWhereUniqueInput!, create: TagCreateInput!, update: TagUpdateInput!): Tag!
+  deleteTag(where: TagWhereUniqueInput!): Tag
+  deleteManyTags(where: TagWhereInput): BatchPayload!
+  createUser(data: UserCreateInput!): User!
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
+  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
+  deleteUser(where: UserWhereUniqueInput!): User
+  deleteManyUsers(where: UserWhereInput): BatchPayload!
+}
+
+enum MutationType {
+  CREATED
+  UPDATED
+  DELETED
+}
+
+interface Node {
+  id: ID!
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+type Query {
+  category(where: CategoryWhereUniqueInput!): Category
+  categories(where: CategoryWhereInput, orderBy: CategoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Category]!
+  categoriesConnection(where: CategoryWhereInput, orderBy: CategoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CategoryConnection!
+  city(where: CityWhereUniqueInput!): City
+  cities(where: CityWhereInput, orderBy: CityOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [City]!
+  citiesConnection(where: CityWhereInput, orderBy: CityOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CityConnection!
+  job(where: JobWhereUniqueInput!): Job
+  jobs(where: JobWhereInput, orderBy: JobOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Job]!
+  jobsConnection(where: JobWhereInput, orderBy: JobOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): JobConnection!
+  tag(where: TagWhereUniqueInput!): Tag
+  tags(where: TagWhereInput, orderBy: TagOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Tag]!
+  tagsConnection(where: TagWhereInput, orderBy: TagOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TagConnection!
+  user(where: UserWhereUniqueInput!): User
+  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
+  usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
+  node(id: ID!): Node
+}
+
+type Subscription {
+  category(where: CategorySubscriptionWhereInput): CategorySubscriptionPayload
+  city(where: CitySubscriptionWhereInput): CitySubscriptionPayload
+  job(where: JobSubscriptionWhereInput): JobSubscriptionPayload
+  tag(where: TagSubscriptionWhereInput): TagSubscriptionPayload
+  user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
+}
+
+type Tag {
+  id: ID!
+  name: String!
+}
+
+type TagConnection {
+  pageInfo: PageInfo!
+  edges: [TagEdge]!
+  aggregate: AggregateTag!
+}
+
+input TagCreateInput {
+  id: ID
+  name: String!
+}
+
+type TagEdge {
+  node: Tag!
+  cursor: String!
+}
+
+enum TagOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+}
+
+type TagPreviousValues {
+  id: ID!
+  name: String!
+}
+
+type TagSubscriptionPayload {
+  mutation: MutationType!
+  node: Tag
+  updatedFields: [String!]
+  previousValues: TagPreviousValues
+}
+
+input TagSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: TagWhereInput
+  AND: [TagSubscriptionWhereInput!]
+  OR: [TagSubscriptionWhereInput!]
+  NOT: [TagSubscriptionWhereInput!]
+}
+
+input TagUpdateInput {
+  name: String
+}
+
+input TagUpdateManyMutationInput {
+  name: String
+}
+
+input TagWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  AND: [TagWhereInput!]
+  OR: [TagWhereInput!]
+  NOT: [TagWhereInput!]
+}
+
+input TagWhereUniqueInput {
+  id: ID
+  name: String
+}
+
+type User {
+  id: ID!
+  password: String!
+  email: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type UserConnection {
+  pageInfo: PageInfo!
+  edges: [UserEdge]!
+  aggregate: AggregateUser!
+}
+
+input UserCreateInput {
+  id: ID
+  password: String!
+  email: String!
+}
+
+input UserCreateOneInput {
+  create: UserCreateInput
+  connect: UserWhereUniqueInput
+}
+
+type UserEdge {
+  node: User!
+  cursor: String!
+}
+
+enum UserOrderByInput {
+  id_ASC
+  id_DESC
+  password_ASC
+  password_DESC
+  email_ASC
+  email_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type UserPreviousValues {
+  id: ID!
+  password: String!
+  email: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type UserSubscriptionPayload {
+  mutation: MutationType!
+  node: User
+  updatedFields: [String!]
+  previousValues: UserPreviousValues
+}
+
+input UserSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: UserWhereInput
+  AND: [UserSubscriptionWhereInput!]
+  OR: [UserSubscriptionWhereInput!]
+  NOT: [UserSubscriptionWhereInput!]
+}
+
+input UserUpdateDataInput {
+  password: String
+  email: String
+}
+
+input UserUpdateInput {
+  password: String
+  email: String
+}
+
+input UserUpdateManyMutationInput {
+  password: String
+  email: String
+}
+
+input UserUpdateOneRequiredInput {
+  create: UserCreateInput
+  update: UserUpdateDataInput
+  upsert: UserUpsertNestedInput
+  connect: UserWhereUniqueInput
+}
+
+input UserUpsertNestedInput {
+  update: UserUpdateDataInput!
+  create: UserCreateInput!
+}
+
+input UserWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  password: String
+  password_not: String
+  password_in: [String!]
+  password_not_in: [String!]
+  password_lt: String
+  password_lte: String
+  password_gt: String
+  password_gte: String
+  password_contains: String
+  password_not_contains: String
+  password_starts_with: String
+  password_not_starts_with: String
+  password_ends_with: String
+  password_not_ends_with: String
+  email: String
+  email_not: String
+  email_in: [String!]
+  email_not_in: [String!]
+  email_lt: String
+  email_lte: String
+  email_gt: String
+  email_gte: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
   AND: [UserWhereInput!]
   OR: [UserWhereInput!]
   NOT: [UserWhereInput!]
@@ -144,5 +1082,6 @@ input UserWhereInput {
 
 input UserWhereUniqueInput {
   id: ID
+  email: String
 }
 `

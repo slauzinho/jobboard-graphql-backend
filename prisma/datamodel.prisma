@@ -1,4 +1,42 @@
 type User {
   id: ID! @id
-  name: String!
+  password: String!
+  email: String! @unique
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type City {
+  id: ID! @id
+  lat: Float!
+  lng: Float!
+  name: String! @unique
+  district: String!
+  jobs: [Job]!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Category {
+  id: ID! @id
+  name: String! @unique
+}
+
+type Tag {
+  id: ID! @id
+  name: String! @unique
+}
+
+type Job {
+  id: ID! @id
+  title: String!
+  url: String
+  company: String!
+  description: String!
+  slug: String! @unique
+  city: City!
+  creator: User! @relation(link: INLINE)
+  published_at: DateTime
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
 }

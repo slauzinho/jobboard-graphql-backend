@@ -1,7 +1,13 @@
+enum Permission {
+  BASIC,
+  ADMIN
+}
+
 type User {
   id: ID! @id
   password: String!
   email: String! @unique
+  permission: Permission! @default(value: BASIC)
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
@@ -20,11 +26,13 @@ type City {
 type Category {
   id: ID! @id
   name: String! @unique
+  jobs: [Job!]!
 }
 
 type Tag {
   id: ID! @id
   name: String! @unique
+  jobs: [Job!]
 }
 
 type Job {
@@ -37,6 +45,8 @@ type Job {
   city: City!
   creator: User! @relation(link: INLINE)
   published_at: DateTime
+  categories: [Category!]! @relation(link: TABLE)
+  tags: [Tag!]! @relation(link: TABLE)
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }

@@ -1,10 +1,9 @@
 import * as bcrypt from 'bcryptjs'
 import * as jwt from 'jsonwebtoken'
 import { Context } from '../../utils'
-import { UserCreateInput } from '../../generated/prisma-client';
 
 export const auth = {
-  async signup(parent, args: UserCreateInput, ctx: Context) {
+  async signup(parent, args, ctx: Context) {
     const password = await bcrypt.hash(args.password, 10)
     const user = await ctx.prisma.createUser({ ...args, password })
 
@@ -14,15 +13,15 @@ export const auth = {
     }
   },
 
-  async login(parent, { email, password }: UserCreateInput, ctx: Context) {
+  async login(parent, { email, password }, ctx: Context) {
     const user = await ctx.prisma.user({ email })
     if (!user) {
-      throw new Error(`No such user found for email: ${email}`)
+      throw new Error(`Invalid email or password!`)
     }
 
     const valid = await bcrypt.compare(password, user.password)
     if (!valid) {
-      throw new Error('Invalid password')
+      throw new Error('Invalid email or password!')
     }
 
     return {

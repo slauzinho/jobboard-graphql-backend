@@ -29,6 +29,7 @@ type BatchPayload {
 type Category {
   id: ID!
   name: String!
+  jobs(where: JobWhereInput, orderBy: JobOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Job!]
 }
 
 type CategoryConnection {
@@ -38,6 +39,17 @@ type CategoryConnection {
 }
 
 input CategoryCreateInput {
+  id: ID
+  name: String!
+  jobs: JobCreateManyWithoutCategoriesInput
+}
+
+input CategoryCreateManyWithoutJobsInput {
+  create: [CategoryCreateWithoutJobsInput!]
+  connect: [CategoryWhereUniqueInput!]
+}
+
+input CategoryCreateWithoutJobsInput {
   id: ID
   name: String!
 }
@@ -57,6 +69,40 @@ enum CategoryOrderByInput {
 type CategoryPreviousValues {
   id: ID!
   name: String!
+}
+
+input CategoryScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  AND: [CategoryScalarWhereInput!]
+  OR: [CategoryScalarWhereInput!]
+  NOT: [CategoryScalarWhereInput!]
 }
 
 type CategorySubscriptionPayload {
@@ -79,10 +125,47 @@ input CategorySubscriptionWhereInput {
 
 input CategoryUpdateInput {
   name: String
+  jobs: JobUpdateManyWithoutCategoriesInput
+}
+
+input CategoryUpdateManyDataInput {
+  name: String
 }
 
 input CategoryUpdateManyMutationInput {
   name: String
+}
+
+input CategoryUpdateManyWithoutJobsInput {
+  create: [CategoryCreateWithoutJobsInput!]
+  delete: [CategoryWhereUniqueInput!]
+  connect: [CategoryWhereUniqueInput!]
+  set: [CategoryWhereUniqueInput!]
+  disconnect: [CategoryWhereUniqueInput!]
+  update: [CategoryUpdateWithWhereUniqueWithoutJobsInput!]
+  upsert: [CategoryUpsertWithWhereUniqueWithoutJobsInput!]
+  deleteMany: [CategoryScalarWhereInput!]
+  updateMany: [CategoryUpdateManyWithWhereNestedInput!]
+}
+
+input CategoryUpdateManyWithWhereNestedInput {
+  where: CategoryScalarWhereInput!
+  data: CategoryUpdateManyDataInput!
+}
+
+input CategoryUpdateWithoutJobsDataInput {
+  name: String
+}
+
+input CategoryUpdateWithWhereUniqueWithoutJobsInput {
+  where: CategoryWhereUniqueInput!
+  data: CategoryUpdateWithoutJobsDataInput!
+}
+
+input CategoryUpsertWithWhereUniqueWithoutJobsInput {
+  where: CategoryWhereUniqueInput!
+  update: CategoryUpdateWithoutJobsDataInput!
+  create: CategoryCreateWithoutJobsInput!
 }
 
 input CategoryWhereInput {
@@ -114,6 +197,9 @@ input CategoryWhereInput {
   name_not_starts_with: String
   name_ends_with: String
   name_not_ends_with: String
+  jobs_every: JobWhereInput
+  jobs_some: JobWhereInput
+  jobs_none: JobWhereInput
   AND: [CategoryWhereInput!]
   OR: [CategoryWhereInput!]
   NOT: [CategoryWhereInput!]
@@ -347,6 +433,8 @@ type Job {
   city: City!
   creator: User!
   published_at: DateTime
+  categories(where: CategoryWhereInput, orderBy: CategoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Category!]
+  tags(where: TagWhereInput, orderBy: TagOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Tag!]
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -367,11 +455,36 @@ input JobCreateInput {
   city: CityCreateOneWithoutJobsInput!
   creator: UserCreateOneInput!
   published_at: DateTime
+  categories: CategoryCreateManyWithoutJobsInput
+  tags: TagCreateManyWithoutJobsInput
+}
+
+input JobCreateManyWithoutCategoriesInput {
+  create: [JobCreateWithoutCategoriesInput!]
+  connect: [JobWhereUniqueInput!]
 }
 
 input JobCreateManyWithoutCityInput {
   create: [JobCreateWithoutCityInput!]
   connect: [JobWhereUniqueInput!]
+}
+
+input JobCreateManyWithoutTagsInput {
+  create: [JobCreateWithoutTagsInput!]
+  connect: [JobWhereUniqueInput!]
+}
+
+input JobCreateWithoutCategoriesInput {
+  id: ID
+  title: String!
+  url: String
+  company: String!
+  description: String!
+  slug: String!
+  city: CityCreateOneWithoutJobsInput!
+  creator: UserCreateOneInput!
+  published_at: DateTime
+  tags: TagCreateManyWithoutJobsInput
 }
 
 input JobCreateWithoutCityInput {
@@ -383,6 +496,21 @@ input JobCreateWithoutCityInput {
   slug: String!
   creator: UserCreateOneInput!
   published_at: DateTime
+  categories: CategoryCreateManyWithoutJobsInput
+  tags: TagCreateManyWithoutJobsInput
+}
+
+input JobCreateWithoutTagsInput {
+  id: ID
+  title: String!
+  url: String
+  company: String!
+  description: String!
+  slug: String!
+  city: CityCreateOneWithoutJobsInput!
+  creator: UserCreateOneInput!
+  published_at: DateTime
+  categories: CategoryCreateManyWithoutJobsInput
 }
 
 type JobEdge {
@@ -564,6 +692,8 @@ input JobUpdateInput {
   city: CityUpdateOneRequiredWithoutJobsInput
   creator: UserUpdateOneRequiredInput
   published_at: DateTime
+  categories: CategoryUpdateManyWithoutJobsInput
+  tags: TagUpdateManyWithoutJobsInput
 }
 
 input JobUpdateManyDataInput {
@@ -584,6 +714,18 @@ input JobUpdateManyMutationInput {
   published_at: DateTime
 }
 
+input JobUpdateManyWithoutCategoriesInput {
+  create: [JobCreateWithoutCategoriesInput!]
+  delete: [JobWhereUniqueInput!]
+  connect: [JobWhereUniqueInput!]
+  set: [JobWhereUniqueInput!]
+  disconnect: [JobWhereUniqueInput!]
+  update: [JobUpdateWithWhereUniqueWithoutCategoriesInput!]
+  upsert: [JobUpsertWithWhereUniqueWithoutCategoriesInput!]
+  deleteMany: [JobScalarWhereInput!]
+  updateMany: [JobUpdateManyWithWhereNestedInput!]
+}
+
 input JobUpdateManyWithoutCityInput {
   create: [JobCreateWithoutCityInput!]
   delete: [JobWhereUniqueInput!]
@@ -596,9 +738,33 @@ input JobUpdateManyWithoutCityInput {
   updateMany: [JobUpdateManyWithWhereNestedInput!]
 }
 
+input JobUpdateManyWithoutTagsInput {
+  create: [JobCreateWithoutTagsInput!]
+  delete: [JobWhereUniqueInput!]
+  connect: [JobWhereUniqueInput!]
+  set: [JobWhereUniqueInput!]
+  disconnect: [JobWhereUniqueInput!]
+  update: [JobUpdateWithWhereUniqueWithoutTagsInput!]
+  upsert: [JobUpsertWithWhereUniqueWithoutTagsInput!]
+  deleteMany: [JobScalarWhereInput!]
+  updateMany: [JobUpdateManyWithWhereNestedInput!]
+}
+
 input JobUpdateManyWithWhereNestedInput {
   where: JobScalarWhereInput!
   data: JobUpdateManyDataInput!
+}
+
+input JobUpdateWithoutCategoriesDataInput {
+  title: String
+  url: String
+  company: String
+  description: String
+  slug: String
+  city: CityUpdateOneRequiredWithoutJobsInput
+  creator: UserUpdateOneRequiredInput
+  published_at: DateTime
+  tags: TagUpdateManyWithoutJobsInput
 }
 
 input JobUpdateWithoutCityDataInput {
@@ -609,6 +775,25 @@ input JobUpdateWithoutCityDataInput {
   slug: String
   creator: UserUpdateOneRequiredInput
   published_at: DateTime
+  categories: CategoryUpdateManyWithoutJobsInput
+  tags: TagUpdateManyWithoutJobsInput
+}
+
+input JobUpdateWithoutTagsDataInput {
+  title: String
+  url: String
+  company: String
+  description: String
+  slug: String
+  city: CityUpdateOneRequiredWithoutJobsInput
+  creator: UserUpdateOneRequiredInput
+  published_at: DateTime
+  categories: CategoryUpdateManyWithoutJobsInput
+}
+
+input JobUpdateWithWhereUniqueWithoutCategoriesInput {
+  where: JobWhereUniqueInput!
+  data: JobUpdateWithoutCategoriesDataInput!
 }
 
 input JobUpdateWithWhereUniqueWithoutCityInput {
@@ -616,10 +801,27 @@ input JobUpdateWithWhereUniqueWithoutCityInput {
   data: JobUpdateWithoutCityDataInput!
 }
 
+input JobUpdateWithWhereUniqueWithoutTagsInput {
+  where: JobWhereUniqueInput!
+  data: JobUpdateWithoutTagsDataInput!
+}
+
+input JobUpsertWithWhereUniqueWithoutCategoriesInput {
+  where: JobWhereUniqueInput!
+  update: JobUpdateWithoutCategoriesDataInput!
+  create: JobCreateWithoutCategoriesInput!
+}
+
 input JobUpsertWithWhereUniqueWithoutCityInput {
   where: JobWhereUniqueInput!
   update: JobUpdateWithoutCityDataInput!
   create: JobCreateWithoutCityInput!
+}
+
+input JobUpsertWithWhereUniqueWithoutTagsInput {
+  where: JobWhereUniqueInput!
+  update: JobUpdateWithoutTagsDataInput!
+  create: JobCreateWithoutTagsInput!
 }
 
 input JobWhereInput {
@@ -717,6 +919,12 @@ input JobWhereInput {
   published_at_lte: DateTime
   published_at_gt: DateTime
   published_at_gte: DateTime
+  categories_every: CategoryWhereInput
+  categories_some: CategoryWhereInput
+  categories_none: CategoryWhereInput
+  tags_every: TagWhereInput
+  tags_some: TagWhereInput
+  tags_none: TagWhereInput
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]
@@ -795,6 +1003,11 @@ type PageInfo {
   endCursor: String
 }
 
+enum Permission {
+  BASIC
+  ADMIN
+}
+
 type Query {
   category(where: CategoryWhereUniqueInput!): Category
   categories(where: CategoryWhereInput, orderBy: CategoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Category]!
@@ -825,6 +1038,7 @@ type Subscription {
 type Tag {
   id: ID!
   name: String!
+  jobs(where: JobWhereInput, orderBy: JobOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Job!]
 }
 
 type TagConnection {
@@ -834,6 +1048,17 @@ type TagConnection {
 }
 
 input TagCreateInput {
+  id: ID
+  name: String!
+  jobs: JobCreateManyWithoutTagsInput
+}
+
+input TagCreateManyWithoutJobsInput {
+  create: [TagCreateWithoutJobsInput!]
+  connect: [TagWhereUniqueInput!]
+}
+
+input TagCreateWithoutJobsInput {
   id: ID
   name: String!
 }
@@ -853,6 +1078,40 @@ enum TagOrderByInput {
 type TagPreviousValues {
   id: ID!
   name: String!
+}
+
+input TagScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  AND: [TagScalarWhereInput!]
+  OR: [TagScalarWhereInput!]
+  NOT: [TagScalarWhereInput!]
 }
 
 type TagSubscriptionPayload {
@@ -875,10 +1134,47 @@ input TagSubscriptionWhereInput {
 
 input TagUpdateInput {
   name: String
+  jobs: JobUpdateManyWithoutTagsInput
+}
+
+input TagUpdateManyDataInput {
+  name: String
 }
 
 input TagUpdateManyMutationInput {
   name: String
+}
+
+input TagUpdateManyWithoutJobsInput {
+  create: [TagCreateWithoutJobsInput!]
+  delete: [TagWhereUniqueInput!]
+  connect: [TagWhereUniqueInput!]
+  set: [TagWhereUniqueInput!]
+  disconnect: [TagWhereUniqueInput!]
+  update: [TagUpdateWithWhereUniqueWithoutJobsInput!]
+  upsert: [TagUpsertWithWhereUniqueWithoutJobsInput!]
+  deleteMany: [TagScalarWhereInput!]
+  updateMany: [TagUpdateManyWithWhereNestedInput!]
+}
+
+input TagUpdateManyWithWhereNestedInput {
+  where: TagScalarWhereInput!
+  data: TagUpdateManyDataInput!
+}
+
+input TagUpdateWithoutJobsDataInput {
+  name: String
+}
+
+input TagUpdateWithWhereUniqueWithoutJobsInput {
+  where: TagWhereUniqueInput!
+  data: TagUpdateWithoutJobsDataInput!
+}
+
+input TagUpsertWithWhereUniqueWithoutJobsInput {
+  where: TagWhereUniqueInput!
+  update: TagUpdateWithoutJobsDataInput!
+  create: TagCreateWithoutJobsInput!
 }
 
 input TagWhereInput {
@@ -910,6 +1206,9 @@ input TagWhereInput {
   name_not_starts_with: String
   name_ends_with: String
   name_not_ends_with: String
+  jobs_every: JobWhereInput
+  jobs_some: JobWhereInput
+  jobs_none: JobWhereInput
   AND: [TagWhereInput!]
   OR: [TagWhereInput!]
   NOT: [TagWhereInput!]
@@ -924,6 +1223,7 @@ type User {
   id: ID!
   password: String!
   email: String!
+  permission: Permission!
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -938,6 +1238,7 @@ input UserCreateInput {
   id: ID
   password: String!
   email: String!
+  permission: Permission
 }
 
 input UserCreateOneInput {
@@ -957,6 +1258,8 @@ enum UserOrderByInput {
   password_DESC
   email_ASC
   email_DESC
+  permission_ASC
+  permission_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -967,6 +1270,7 @@ type UserPreviousValues {
   id: ID!
   password: String!
   email: String!
+  permission: Permission!
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -992,16 +1296,19 @@ input UserSubscriptionWhereInput {
 input UserUpdateDataInput {
   password: String
   email: String
+  permission: Permission
 }
 
 input UserUpdateInput {
   password: String
   email: String
+  permission: Permission
 }
 
 input UserUpdateManyMutationInput {
   password: String
   email: String
+  permission: Permission
 }
 
 input UserUpdateOneRequiredInput {
@@ -1059,6 +1366,10 @@ input UserWhereInput {
   email_not_starts_with: String
   email_ends_with: String
   email_not_ends_with: String
+  permission: Permission
+  permission_not: Permission
+  permission_in: [Permission!]
+  permission_not_in: [Permission!]
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]

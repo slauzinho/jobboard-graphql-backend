@@ -6,6 +6,19 @@ type Query {
 type Mutation {
   signup(email: String!, password: String!): AuthPayload!
   login(email: String!, password: String!): AuthPayload!
+  publish(id: ID!): Boolean!
+  unpublish(id: ID!): Boolean!
+  createJob(input: JobCreateInput): Boolean!
+}
+
+input JobCreateInput {
+  title: String!
+  url: String
+  company: String!
+  description: String!
+  city: String!
+  categories: [String!]!
+  tags: [String]!
 }
 
 type AuthPayload {
@@ -33,6 +46,19 @@ type Job {
   company: String!
   description: String!
   city: City!
-  creator: User!
   published_at: String!
+  categories: [Category!]!
+  tags: [Tag]!
+}
+
+type Category {
+  id: ID!
+  name: String!
+  jobs: [Job]
+}
+
+type Tag {
+  id: ID!
+  name: String!
+  jobs: [Job]
 }

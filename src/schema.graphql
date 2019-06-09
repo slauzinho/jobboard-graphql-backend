@@ -9,6 +9,14 @@ type Mutation {
   publish(id: ID!): Job!
   unpublish(id: ID!): Job!
   createJob(input: JobCreateInput): Job!
+  forgotPassword(email: String!): Boolean!
+  resetPassword(input: ResetPasswordInput): AuthPayload!
+}
+
+input ResetPasswordInput {
+  resetToken: String!
+  password: String!
+  repeatPassword: String!
 }
 
 input JobCreateInput {

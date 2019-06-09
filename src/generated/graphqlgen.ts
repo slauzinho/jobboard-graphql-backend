@@ -961,6 +961,11 @@ export namespace MutationResolvers {
     categories: string[];
     tags: Array<string | null>;
   }
+  export interface ResetPasswordInput {
+    resetToken: string;
+    password: string;
+    repeatPassword: string;
+  }
 
   export interface ArgsSignup {
     email: string;
@@ -982,6 +987,14 @@ export namespace MutationResolvers {
 
   export interface ArgsCreateJob {
     input?: JobCreateInput | null;
+  }
+
+  export interface ArgsForgotPassword {
+    email: string;
+  }
+
+  export interface ArgsResetPassword {
+    input?: ResetPasswordInput | null;
   }
 
   export type SignupResolver =
@@ -1069,6 +1082,40 @@ export namespace MutationResolvers {
         ) => Job | Promise<Job>;
       };
 
+  export type ForgotPasswordResolver =
+    | ((
+        parent: undefined,
+        args: ArgsForgotPassword,
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => boolean | Promise<boolean>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: undefined,
+          args: ArgsForgotPassword,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => boolean | Promise<boolean>;
+      };
+
+  export type ResetPasswordResolver =
+    | ((
+        parent: undefined,
+        args: ArgsResetPassword,
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => AuthPayload | Promise<AuthPayload>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: undefined,
+          args: ArgsResetPassword,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => AuthPayload | Promise<AuthPayload>;
+      };
+
   export interface Type {
     signup:
       | ((
@@ -1153,6 +1200,40 @@ export namespace MutationResolvers {
             ctx: Context,
             info: GraphQLResolveInfo
           ) => Job | Promise<Job>;
+        };
+
+    forgotPassword:
+      | ((
+          parent: undefined,
+          args: ArgsForgotPassword,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => boolean | Promise<boolean>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: undefined,
+            args: ArgsForgotPassword,
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => boolean | Promise<boolean>;
+        };
+
+    resetPassword:
+      | ((
+          parent: undefined,
+          args: ArgsResetPassword,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => AuthPayload | Promise<AuthPayload>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: undefined,
+            args: ArgsResetPassword,
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => AuthPayload | Promise<AuthPayload>;
         };
   }
 }

@@ -312,6 +312,10 @@ export type UserOrderByInput =
   | "email_DESC"
   | "permission_ASC"
   | "permission_DESC"
+  | "resetToken_ASC"
+  | "resetToken_DESC"
+  | "resetTokenExpiry_ASC"
+  | "resetTokenExpiry_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
@@ -410,6 +414,28 @@ export interface UserWhereInput {
   permission_not?: Maybe<Permission>;
   permission_in?: Maybe<Permission[] | Permission>;
   permission_not_in?: Maybe<Permission[] | Permission>;
+  resetToken?: Maybe<String>;
+  resetToken_not?: Maybe<String>;
+  resetToken_in?: Maybe<String[] | String>;
+  resetToken_not_in?: Maybe<String[] | String>;
+  resetToken_lt?: Maybe<String>;
+  resetToken_lte?: Maybe<String>;
+  resetToken_gt?: Maybe<String>;
+  resetToken_gte?: Maybe<String>;
+  resetToken_contains?: Maybe<String>;
+  resetToken_not_contains?: Maybe<String>;
+  resetToken_starts_with?: Maybe<String>;
+  resetToken_not_starts_with?: Maybe<String>;
+  resetToken_ends_with?: Maybe<String>;
+  resetToken_not_ends_with?: Maybe<String>;
+  resetTokenExpiry?: Maybe<Float>;
+  resetTokenExpiry_not?: Maybe<Float>;
+  resetTokenExpiry_in?: Maybe<Float[] | Float>;
+  resetTokenExpiry_not_in?: Maybe<Float[] | Float>;
+  resetTokenExpiry_lt?: Maybe<Float>;
+  resetTokenExpiry_lte?: Maybe<Float>;
+  resetTokenExpiry_gt?: Maybe<Float>;
+  resetTokenExpiry_gte?: Maybe<Float>;
   createdAt?: Maybe<DateTimeInput>;
   createdAt_not?: Maybe<DateTimeInput>;
   createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
@@ -478,6 +504,8 @@ export interface UserCreateInput {
   password: String;
   email: String;
   permission?: Maybe<Permission>;
+  resetToken?: Maybe<String>;
+  resetTokenExpiry?: Maybe<Float>;
 }
 
 export interface CategoryUpdateManyWithoutJobsInput {
@@ -662,6 +690,8 @@ export interface UserUpdateInput {
   password?: Maybe<String>;
   email?: Maybe<String>;
   permission?: Maybe<Permission>;
+  resetToken?: Maybe<String>;
+  resetTokenExpiry?: Maybe<Float>;
 }
 
 export interface JobUpdateWithoutCategoriesDataInput {
@@ -857,6 +887,8 @@ export interface UserUpdateDataInput {
   password?: Maybe<String>;
   email?: Maybe<String>;
   permission?: Maybe<Permission>;
+  resetToken?: Maybe<String>;
+  resetTokenExpiry?: Maybe<Float>;
 }
 
 export type TagWhereUniqueInput = AtLeastOne<{
@@ -901,6 +933,7 @@ export interface TagUpdateManyWithoutJobsInput {
 export type UserWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
   email?: Maybe<String>;
+  resetToken?: Maybe<String>;
 }>;
 
 export interface TagUpdateWithWhereUniqueWithoutJobsInput {
@@ -1368,6 +1401,8 @@ export interface UserUpdateManyMutationInput {
   password?: Maybe<String>;
   email?: Maybe<String>;
   permission?: Maybe<Permission>;
+  resetToken?: Maybe<String>;
+  resetTokenExpiry?: Maybe<Float>;
 }
 
 export interface JobCreateManyWithoutCategoriesInput {
@@ -1419,6 +1454,8 @@ export interface UserPreviousValues {
   password: String;
   email: String;
   permission: Permission;
+  resetToken?: String;
+  resetTokenExpiry?: Float;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
@@ -1430,6 +1467,8 @@ export interface UserPreviousValuesPromise
   password: () => Promise<String>;
   email: () => Promise<String>;
   permission: () => Promise<Permission>;
+  resetToken: () => Promise<String>;
+  resetTokenExpiry: () => Promise<Float>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
@@ -1441,6 +1480,8 @@ export interface UserPreviousValuesSubscription
   password: () => Promise<AsyncIterator<String>>;
   email: () => Promise<AsyncIterator<String>>;
   permission: () => Promise<AsyncIterator<Permission>>;
+  resetToken: () => Promise<AsyncIterator<String>>;
+  resetTokenExpiry: () => Promise<AsyncIterator<Float>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
@@ -2055,6 +2096,8 @@ export interface User {
   password: String;
   email: String;
   permission: Permission;
+  resetToken?: String;
+  resetTokenExpiry?: Float;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
@@ -2064,6 +2107,8 @@ export interface UserPromise extends Promise<User>, Fragmentable {
   password: () => Promise<String>;
   email: () => Promise<String>;
   permission: () => Promise<Permission>;
+  resetToken: () => Promise<String>;
+  resetTokenExpiry: () => Promise<Float>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
@@ -2075,6 +2120,8 @@ export interface UserSubscription
   password: () => Promise<AsyncIterator<String>>;
   email: () => Promise<AsyncIterator<String>>;
   permission: () => Promise<AsyncIterator<Permission>>;
+  resetToken: () => Promise<AsyncIterator<String>>;
+  resetTokenExpiry: () => Promise<AsyncIterator<Float>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
@@ -2086,6 +2133,8 @@ export interface UserNullablePromise
   password: () => Promise<String>;
   email: () => Promise<String>;
   permission: () => Promise<Permission>;
+  resetToken: () => Promise<String>;
+  resetTokenExpiry: () => Promise<Float>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }

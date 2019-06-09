@@ -1224,6 +1224,8 @@ type User {
   password: String!
   email: String!
   permission: Permission!
+  resetToken: String
+  resetTokenExpiry: Float
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -1239,6 +1241,8 @@ input UserCreateInput {
   password: String!
   email: String!
   permission: Permission
+  resetToken: String
+  resetTokenExpiry: Float
 }
 
 input UserCreateOneInput {
@@ -1260,6 +1264,10 @@ enum UserOrderByInput {
   email_DESC
   permission_ASC
   permission_DESC
+  resetToken_ASC
+  resetToken_DESC
+  resetTokenExpiry_ASC
+  resetTokenExpiry_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -1271,6 +1279,8 @@ type UserPreviousValues {
   password: String!
   email: String!
   permission: Permission!
+  resetToken: String
+  resetTokenExpiry: Float
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -1297,18 +1307,24 @@ input UserUpdateDataInput {
   password: String
   email: String
   permission: Permission
+  resetToken: String
+  resetTokenExpiry: Float
 }
 
 input UserUpdateInput {
   password: String
   email: String
   permission: Permission
+  resetToken: String
+  resetTokenExpiry: Float
 }
 
 input UserUpdateManyMutationInput {
   password: String
   email: String
   permission: Permission
+  resetToken: String
+  resetTokenExpiry: Float
 }
 
 input UserUpdateOneRequiredInput {
@@ -1370,6 +1386,28 @@ input UserWhereInput {
   permission_not: Permission
   permission_in: [Permission!]
   permission_not_in: [Permission!]
+  resetToken: String
+  resetToken_not: String
+  resetToken_in: [String!]
+  resetToken_not_in: [String!]
+  resetToken_lt: String
+  resetToken_lte: String
+  resetToken_gt: String
+  resetToken_gte: String
+  resetToken_contains: String
+  resetToken_not_contains: String
+  resetToken_starts_with: String
+  resetToken_not_starts_with: String
+  resetToken_ends_with: String
+  resetToken_not_ends_with: String
+  resetTokenExpiry: Float
+  resetTokenExpiry_not: Float
+  resetTokenExpiry_in: [Float!]
+  resetTokenExpiry_not_in: [Float!]
+  resetTokenExpiry_lt: Float
+  resetTokenExpiry_lte: Float
+  resetTokenExpiry_gt: Float
+  resetTokenExpiry_gte: Float
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]
@@ -1394,5 +1432,6 @@ input UserWhereInput {
 input UserWhereUniqueInput {
   id: ID
   email: String
+  resetToken: String
 }
 `

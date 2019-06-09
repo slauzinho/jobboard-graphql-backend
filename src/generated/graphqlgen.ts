@@ -119,6 +119,23 @@ export namespace UserResolvers {
         ) => string | Promise<string>;
       };
 
+  export type JobsResolver =
+    | ((
+        parent: User,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => Array<Job | null> | Promise<Array<Job | null>>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: User,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => Array<Job | null> | Promise<Array<Job | null>>;
+      };
+
   export interface Type {
     id:
       | ((
@@ -152,6 +169,23 @@ export namespace UserResolvers {
             ctx: Context,
             info: GraphQLResolveInfo
           ) => string | Promise<string>;
+        };
+
+    jobs:
+      | ((
+          parent: User,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => Array<Job | null> | Promise<Array<Job | null>>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: User,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => Array<Job | null> | Promise<Array<Job | null>>;
         };
   }
 }

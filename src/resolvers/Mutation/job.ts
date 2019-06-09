@@ -22,11 +22,11 @@ async function getSlug(slug: string, ctx: Context, counter: number, length: numb
 }
 
 export default {
-  async createJob(parent, {input}: {input: JobCreateInput}, ctx: Context) {
+  async createJob(parent, {input}, ctx: Context) {
     const initialSlug = slugify(input.title.toLowerCase());
     const slug = await getSlug(initialSlug, ctx, 0, initialSlug.length);
     try {
-      await ctx.prisma.createJob({
+      const job = await ctx.prisma.createJob({
           ...input,
           creator: {
               connect: {
@@ -46,9 +46,9 @@ export default {
           },
           slug
       })
+      return job;
     } catch (e) {
-      return new Error('Error creating job');
+      throw new Error('Error trying to create job!');
     }
-    return true;
   },
 };

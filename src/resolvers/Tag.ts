@@ -1,7 +1,10 @@
-import { Context } from '../utils'
+import { Context } from '../utils';
+import { TagResolvers } from '../generated/graphqlgen';
 
-export const Tag = {
-    jobs: (parent, _, ctx: Context) => {
-        return ctx.prisma.tag({id: parent.id}).jobs();
-    },
-}
+export const Tag: TagResolvers.Type = {
+  ...TagResolvers.defaultResolvers,
+  
+  jobs: (parent, _, ctx: Context) => {
+    return ctx.prisma.tag({ id: parent.id }).jobs();
+  },
+};

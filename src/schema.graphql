@@ -6,9 +6,9 @@ type Query {
 type Mutation {
   signup(email: String!, password: String!): AuthPayload!
   login(email: String!, password: String!): AuthPayload!
-  publish(id: ID!): Boolean!
-  unpublish(id: ID!): Boolean!
-  createJob(input: JobCreateInput): Boolean!
+  publish(id: ID!): Job!
+  unpublish(id: ID!): Job!
+  createJob(input: JobCreateInput): Job!
 }
 
 input JobCreateInput {
@@ -40,13 +40,14 @@ type City {
 }
 
 type Job {
+  id: ID!
   slug: String!
   title: String!
   url: String
   company: String!
   description: String!
   city: City!
-  published_at: String!
+  published_at: String
   categories: [Category!]!
   tags: [Tag]!
 }

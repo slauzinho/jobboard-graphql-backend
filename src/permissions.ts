@@ -1,5 +1,6 @@
 import { rule, shield, and, or, not } from 'graphql-shield';
 import { Context, getUserId } from './utils';
+import console = require('console');
 
 const isAuthenticated = rule()(async (parent, args, ctx) => {
   const userID = getUserId(ctx);
@@ -10,7 +11,7 @@ const isAuthenticated = rule()(async (parent, args, ctx) => {
 
 const isOwner = rule()(async (parent, args, ctx) => {
   const userID = getUserId(ctx);
-  const owner = await ctx.prisma.job({ id: args.id }).owner();
+  const owner = await ctx.prisma.job({ id: args.id }).creator();
   ctx.user = owner
   return userID === owner.id;
 });
@@ -25,7 +26,7 @@ const isAdmin = rule()(async (parent, args, ctx: Context) => {
 const permissions = shield({
   Mutation: {
     publish: isAdmin, // only admin can publish jobs
-    unpublish: isAdmin, // only admin can unpublish a job
+    unpublish: or(isAdmin, isOwner), // only admin or owner can unpublish a job
     createJob: isAuthenticated // you need to me authenticated to create a job
   },
 });

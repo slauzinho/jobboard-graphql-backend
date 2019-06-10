@@ -259,6 +259,13 @@ export interface ClientConstructor<T> {
 
 export type Permission = "BASIC" | "ADMIN";
 
+export type Status =
+  | "EXPIRED"
+  | "REJECTED"
+  | "PENDING"
+  | "APPROVED"
+  | "REMOVED";
+
 export type JobOrderByInput =
   | "id_ASC"
   | "id_DESC"
@@ -277,7 +284,9 @@ export type JobOrderByInput =
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
-  | "updatedAt_DESC";
+  | "updatedAt_DESC"
+  | "status_ASC"
+  | "status_DESC";
 
 export type CategoryOrderByInput =
   | "id_ASC"
@@ -365,6 +374,48 @@ export interface TagScalarWhereInput {
   AND?: Maybe<TagScalarWhereInput[] | TagScalarWhereInput>;
   OR?: Maybe<TagScalarWhereInput[] | TagScalarWhereInput>;
   NOT?: Maybe<TagScalarWhereInput[] | TagScalarWhereInput>;
+}
+
+export interface CategoryWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  jobs_every?: Maybe<JobWhereInput>;
+  jobs_some?: Maybe<JobWhereInput>;
+  jobs_none?: Maybe<JobWhereInput>;
+  AND?: Maybe<CategoryWhereInput[] | CategoryWhereInput>;
+  OR?: Maybe<CategoryWhereInput[] | CategoryWhereInput>;
+  NOT?: Maybe<CategoryWhereInput[] | CategoryWhereInput>;
+}
+
+export interface TagUpdateManyWithWhereNestedInput {
+  where: TagScalarWhereInput;
+  data: TagUpdateManyDataInput;
 }
 
 export interface UserWhereInput {
@@ -455,48 +506,6 @@ export interface UserWhereInput {
   AND?: Maybe<UserWhereInput[] | UserWhereInput>;
   OR?: Maybe<UserWhereInput[] | UserWhereInput>;
   NOT?: Maybe<UserWhereInput[] | UserWhereInput>;
-}
-
-export interface TagUpdateManyWithWhereNestedInput {
-  where: TagScalarWhereInput;
-  data: TagUpdateManyDataInput;
-}
-
-export interface TagWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  name?: Maybe<String>;
-  name_not?: Maybe<String>;
-  name_in?: Maybe<String[] | String>;
-  name_not_in?: Maybe<String[] | String>;
-  name_lt?: Maybe<String>;
-  name_lte?: Maybe<String>;
-  name_gt?: Maybe<String>;
-  name_gte?: Maybe<String>;
-  name_contains?: Maybe<String>;
-  name_not_contains?: Maybe<String>;
-  name_starts_with?: Maybe<String>;
-  name_not_starts_with?: Maybe<String>;
-  name_ends_with?: Maybe<String>;
-  name_not_ends_with?: Maybe<String>;
-  jobs_every?: Maybe<JobWhereInput>;
-  jobs_some?: Maybe<JobWhereInput>;
-  jobs_none?: Maybe<JobWhereInput>;
-  AND?: Maybe<TagWhereInput[] | TagWhereInput>;
-  OR?: Maybe<TagWhereInput[] | TagWhereInput>;
-  NOT?: Maybe<TagWhereInput[] | TagWhereInput>;
 }
 
 export interface UserCreateInput {
@@ -704,6 +713,7 @@ export interface JobUpdateWithoutCategoriesDataInput {
   creator?: Maybe<UserUpdateOneRequiredInput>;
   published_at?: Maybe<DateTimeInput>;
   tags?: Maybe<TagUpdateManyWithoutJobsInput>;
+  status?: Maybe<Status>;
 }
 
 export interface JobUpsertWithWhereUniqueWithoutTagsInput {
@@ -836,6 +846,10 @@ export interface JobWhereInput {
   updatedAt_lte?: Maybe<DateTimeInput>;
   updatedAt_gt?: Maybe<DateTimeInput>;
   updatedAt_gte?: Maybe<DateTimeInput>;
+  status?: Maybe<Status>;
+  status_not?: Maybe<Status>;
+  status_in?: Maybe<Status[] | Status>;
+  status_not_in?: Maybe<Status[] | Status>;
   AND?: Maybe<JobWhereInput[] | JobWhereInput>;
   OR?: Maybe<JobWhereInput[] | JobWhereInput>;
   NOT?: Maybe<JobWhereInput[] | JobWhereInput>;
@@ -881,6 +895,7 @@ export interface JobCreateWithoutTagsInput {
   creator: UserCreateOneInput;
   published_at?: Maybe<DateTimeInput>;
   categories?: Maybe<CategoryCreateManyWithoutJobsInput>;
+  status?: Maybe<Status>;
 }
 
 export interface UserUpdateDataInput {
@@ -908,6 +923,7 @@ export interface JobUpdateManyMutationInput {
   description?: Maybe<String>;
   slug?: Maybe<String>;
   published_at?: Maybe<DateTimeInput>;
+  status?: Maybe<Status>;
 }
 
 export interface TagUpdateManyWithoutJobsInput {
@@ -968,7 +984,7 @@ export interface CategoryCreateInput {
   jobs?: Maybe<JobCreateManyWithoutCategoriesInput>;
 }
 
-export interface CategoryWhereInput {
+export interface TagWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
   id_in?: Maybe<ID_Input[] | ID_Input>;
@@ -1000,9 +1016,9 @@ export interface CategoryWhereInput {
   jobs_every?: Maybe<JobWhereInput>;
   jobs_some?: Maybe<JobWhereInput>;
   jobs_none?: Maybe<JobWhereInput>;
-  AND?: Maybe<CategoryWhereInput[] | CategoryWhereInput>;
-  OR?: Maybe<CategoryWhereInput[] | CategoryWhereInput>;
-  NOT?: Maybe<CategoryWhereInput[] | CategoryWhereInput>;
+  AND?: Maybe<TagWhereInput[] | TagWhereInput>;
+  OR?: Maybe<TagWhereInput[] | TagWhereInput>;
+  NOT?: Maybe<TagWhereInput[] | TagWhereInput>;
 }
 
 export interface JobCreateWithoutCategoriesInput {
@@ -1016,6 +1032,7 @@ export interface JobCreateWithoutCategoriesInput {
   creator: UserCreateOneInput;
   published_at?: Maybe<DateTimeInput>;
   tags?: Maybe<TagCreateManyWithoutJobsInput>;
+  status?: Maybe<Status>;
 }
 
 export interface CategoryScalarWhereInput {
@@ -1203,6 +1220,10 @@ export interface JobScalarWhereInput {
   updatedAt_lte?: Maybe<DateTimeInput>;
   updatedAt_gt?: Maybe<DateTimeInput>;
   updatedAt_gte?: Maybe<DateTimeInput>;
+  status?: Maybe<Status>;
+  status_not?: Maybe<Status>;
+  status_in?: Maybe<Status[] | Status>;
+  status_not_in?: Maybe<Status[] | Status>;
   AND?: Maybe<JobScalarWhereInput[] | JobScalarWhereInput>;
   OR?: Maybe<JobScalarWhereInput[] | JobScalarWhereInput>;
   NOT?: Maybe<JobScalarWhereInput[] | JobScalarWhereInput>;
@@ -1227,6 +1248,7 @@ export interface JobUpdateWithoutTagsDataInput {
   creator?: Maybe<UserUpdateOneRequiredInput>;
   published_at?: Maybe<DateTimeInput>;
   categories?: Maybe<CategoryUpdateManyWithoutJobsInput>;
+  status?: Maybe<Status>;
 }
 
 export interface JobUpdateManyDataInput {
@@ -1236,6 +1258,7 @@ export interface JobUpdateManyDataInput {
   description?: Maybe<String>;
   slug?: Maybe<String>;
   published_at?: Maybe<DateTimeInput>;
+  status?: Maybe<Status>;
 }
 
 export interface TagUpdateInput {
@@ -1269,6 +1292,7 @@ export interface JobCreateInput {
   published_at?: Maybe<DateTimeInput>;
   categories?: Maybe<CategoryCreateManyWithoutJobsInput>;
   tags?: Maybe<TagCreateManyWithoutJobsInput>;
+  status?: Maybe<Status>;
 }
 
 export interface CategoryUpdateWithWhereUniqueWithoutJobsInput {
@@ -1322,6 +1346,7 @@ export interface JobCreateWithoutCityInput {
   published_at?: Maybe<DateTimeInput>;
   categories?: Maybe<CategoryCreateManyWithoutJobsInput>;
   tags?: Maybe<TagCreateManyWithoutJobsInput>;
+  status?: Maybe<Status>;
 }
 
 export interface JobCreateManyWithoutTagsInput {
@@ -1362,6 +1387,7 @@ export interface JobUpdateWithoutCityDataInput {
   published_at?: Maybe<DateTimeInput>;
   categories?: Maybe<CategoryUpdateManyWithoutJobsInput>;
   tags?: Maybe<TagUpdateManyWithoutJobsInput>;
+  status?: Maybe<Status>;
 }
 
 export interface JobUpdateWithWhereUniqueWithoutCityInput {
@@ -1423,6 +1449,7 @@ export interface JobUpdateInput {
   published_at?: Maybe<DateTimeInput>;
   categories?: Maybe<CategoryUpdateManyWithoutJobsInput>;
   tags?: Maybe<TagUpdateManyWithoutJobsInput>;
+  status?: Maybe<Status>;
 }
 
 export interface JobUpdateManyWithoutTagsInput {
@@ -1513,6 +1540,7 @@ export interface JobPreviousValues {
   published_at?: DateTimeOutput;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
+  status: Status;
 }
 
 export interface JobPreviousValuesPromise
@@ -1527,6 +1555,7 @@ export interface JobPreviousValuesPromise
   published_at: () => Promise<DateTimeOutput>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
+  status: () => Promise<Status>;
 }
 
 export interface JobPreviousValuesSubscription
@@ -1541,6 +1570,7 @@ export interface JobPreviousValuesSubscription
   published_at: () => Promise<AsyncIterator<DateTimeOutput>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  status: () => Promise<AsyncIterator<Status>>;
 }
 
 export interface CityConnection {
@@ -2263,6 +2293,7 @@ export interface Job {
   published_at?: DateTimeOutput;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
+  status: Status;
 }
 
 export interface JobPromise extends Promise<Job>, Fragmentable {
@@ -2295,6 +2326,7 @@ export interface JobPromise extends Promise<Job>, Fragmentable {
   }) => T;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
+  status: () => Promise<Status>;
 }
 
 export interface JobSubscription
@@ -2329,6 +2361,7 @@ export interface JobSubscription
   }) => T;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  status: () => Promise<AsyncIterator<Status>>;
 }
 
 export interface JobNullablePromise extends Promise<Job | null>, Fragmentable {
@@ -2361,6 +2394,7 @@ export interface JobNullablePromise extends Promise<Job | null>, Fragmentable {
   }) => T;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
+  status: () => Promise<Status>;
 }
 
 /*
@@ -2408,6 +2442,10 @@ export type Float = number;
 export const models: Model[] = [
   {
     name: "Permission",
+    embedded: false
+  },
+  {
+    name: "Status",
     embedded: false
   },
   {

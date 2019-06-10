@@ -199,7 +199,8 @@ export namespace JobResolvers {
     description: (parent: Job) => parent.description,
     slug: (parent: Job) => parent.slug,
     published_at: (parent: Job) =>
-      parent.published_at === undefined ? null : parent.published_at
+      parent.published_at === undefined ? null : parent.published_at,
+    status: (parent: Job) => parent.status
   };
 
   export type IdResolver =
@@ -372,6 +373,23 @@ export namespace JobResolvers {
         ) => Array<Tag | null> | Promise<Array<Tag | null>>;
       };
 
+  export type StatusResolver =
+    | ((
+        parent: Job,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | Promise<string>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: Job,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>;
+      };
+
   export interface Type {
     id:
       | ((
@@ -541,6 +559,23 @@ export namespace JobResolvers {
             ctx: Context,
             info: GraphQLResolveInfo
           ) => Array<Tag | null> | Promise<Array<Tag | null>>;
+        };
+
+    status:
+      | ((
+          parent: Job,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: Job,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | Promise<string>;
         };
   }
 }

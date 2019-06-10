@@ -1,5 +1,6 @@
 import slugify from 'slugify';
 import { Context, transform } from '../../utils';
+import console = require('console');
 
 async function getSlug(
   slug: string,
@@ -43,9 +44,12 @@ export default {
           connect: input.tags!.map(c => ({ name: c })),
         },
         slug,
+        published_at: ctx.user.permission === 'ADMIN' ? new Date() : null,
+        status: ctx.user.permission === 'ADMIN' ? 'APPROVED' : 'PENDING',
       });
       return job;
     } catch (e) {
+      console.log(e);
       throw new Error('Error trying to create job!');
     }
   },
@@ -76,6 +80,7 @@ export default {
         .updateJob({
           data: {
             published_at: new Date(),
+            status: 'APPROVED'
           },
           where: {
             id,
@@ -95,6 +100,7 @@ export default {
       const job = await ctx.prisma.updateJob({
         data: {
           published_at: null,
+          status: 'REMOVED'
         },
         where: {
           id,

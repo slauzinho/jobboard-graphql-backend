@@ -3,6 +3,14 @@ enum Permission {
   ADMIN
 }
 
+enum Status {
+  EXPIRED,
+  REJECTED,
+  PENDING,
+  APPROVED,
+  REMOVED
+}
+
 type User {
   id: ID! @id
   password: String!
@@ -51,4 +59,5 @@ type Job {
   tags: [Tag!]! @relation(link: TABLE)
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
+  status: Status! @default(value: PENDING)
 }

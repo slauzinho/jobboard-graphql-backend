@@ -59,6 +59,7 @@ type Job {
   published_at: String
   categories: [Category!]!
   tags: [Tag]!
+  status: String!
 }
 
 type Category {

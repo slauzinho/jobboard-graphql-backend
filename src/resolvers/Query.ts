@@ -9,6 +9,6 @@ export const Query: QueryResolvers.Type = {
     return ctx.prisma.user({ id });
   },
   jobs(parent, args, ctx: Context) {
-    return ctx.prisma.jobs({ where: { published_at_not: null } });
+    return ctx.prisma.jobs({ where: { published_at_not: null, status: 'APPROVED' } });
   },
 };

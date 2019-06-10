@@ -437,6 +437,7 @@ type Job {
   tags(where: TagWhereInput, orderBy: TagOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Tag!]
   createdAt: DateTime!
   updatedAt: DateTime!
+  status: Status!
 }
 
 type JobConnection {
@@ -457,6 +458,7 @@ input JobCreateInput {
   published_at: DateTime
   categories: CategoryCreateManyWithoutJobsInput
   tags: TagCreateManyWithoutJobsInput
+  status: Status
 }
 
 input JobCreateManyWithoutCategoriesInput {
@@ -485,6 +487,7 @@ input JobCreateWithoutCategoriesInput {
   creator: UserCreateOneInput!
   published_at: DateTime
   tags: TagCreateManyWithoutJobsInput
+  status: Status
 }
 
 input JobCreateWithoutCityInput {
@@ -498,6 +501,7 @@ input JobCreateWithoutCityInput {
   published_at: DateTime
   categories: CategoryCreateManyWithoutJobsInput
   tags: TagCreateManyWithoutJobsInput
+  status: Status
 }
 
 input JobCreateWithoutTagsInput {
@@ -511,6 +515,7 @@ input JobCreateWithoutTagsInput {
   creator: UserCreateOneInput!
   published_at: DateTime
   categories: CategoryCreateManyWithoutJobsInput
+  status: Status
 }
 
 type JobEdge {
@@ -537,6 +542,8 @@ enum JobOrderByInput {
   createdAt_DESC
   updatedAt_ASC
   updatedAt_DESC
+  status_ASC
+  status_DESC
 }
 
 type JobPreviousValues {
@@ -549,6 +556,7 @@ type JobPreviousValues {
   published_at: DateTime
   createdAt: DateTime!
   updatedAt: DateTime!
+  status: Status!
 }
 
 input JobScalarWhereInput {
@@ -660,6 +668,10 @@ input JobScalarWhereInput {
   updatedAt_lte: DateTime
   updatedAt_gt: DateTime
   updatedAt_gte: DateTime
+  status: Status
+  status_not: Status
+  status_in: [Status!]
+  status_not_in: [Status!]
   AND: [JobScalarWhereInput!]
   OR: [JobScalarWhereInput!]
   NOT: [JobScalarWhereInput!]
@@ -694,6 +706,7 @@ input JobUpdateInput {
   published_at: DateTime
   categories: CategoryUpdateManyWithoutJobsInput
   tags: TagUpdateManyWithoutJobsInput
+  status: Status
 }
 
 input JobUpdateManyDataInput {
@@ -703,6 +716,7 @@ input JobUpdateManyDataInput {
   description: String
   slug: String
   published_at: DateTime
+  status: Status
 }
 
 input JobUpdateManyMutationInput {
@@ -712,6 +726,7 @@ input JobUpdateManyMutationInput {
   description: String
   slug: String
   published_at: DateTime
+  status: Status
 }
 
 input JobUpdateManyWithoutCategoriesInput {
@@ -765,6 +780,7 @@ input JobUpdateWithoutCategoriesDataInput {
   creator: UserUpdateOneRequiredInput
   published_at: DateTime
   tags: TagUpdateManyWithoutJobsInput
+  status: Status
 }
 
 input JobUpdateWithoutCityDataInput {
@@ -777,6 +793,7 @@ input JobUpdateWithoutCityDataInput {
   published_at: DateTime
   categories: CategoryUpdateManyWithoutJobsInput
   tags: TagUpdateManyWithoutJobsInput
+  status: Status
 }
 
 input JobUpdateWithoutTagsDataInput {
@@ -789,6 +806,7 @@ input JobUpdateWithoutTagsDataInput {
   creator: UserUpdateOneRequiredInput
   published_at: DateTime
   categories: CategoryUpdateManyWithoutJobsInput
+  status: Status
 }
 
 input JobUpdateWithWhereUniqueWithoutCategoriesInput {
@@ -941,6 +959,10 @@ input JobWhereInput {
   updatedAt_lte: DateTime
   updatedAt_gt: DateTime
   updatedAt_gte: DateTime
+  status: Status
+  status_not: Status
+  status_in: [Status!]
+  status_not_in: [Status!]
   AND: [JobWhereInput!]
   OR: [JobWhereInput!]
   NOT: [JobWhereInput!]
@@ -1025,6 +1047,14 @@ type Query {
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
   node(id: ID!): Node
+}
+
+enum Status {
+  EXPIRED
+  REJECTED
+  PENDING
+  APPROVED
+  REMOVED
 }
 
 type Subscription {

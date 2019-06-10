@@ -1,6 +1,5 @@
 import { Query } from './Query';
 import { auth } from './Mutation/auth';
-import publish from './Mutation/publish';
 import job from './Mutation/job';
 import { Job } from './Job';
 import { Category } from './Category';
@@ -13,7 +12,6 @@ import { MutationResolvers, Resolvers } from '../generated/graphqlgen';
 const Mutation: MutationResolvers.Type = {
   ...MutationResolvers.defaultResolvers,
   ...auth,
-  ...publish,
   ...job,
 };
 

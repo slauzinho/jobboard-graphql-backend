@@ -48,7 +48,7 @@ export const auth = {
       data: { resetToken, resetTokenExpiry },
     });
 
-    await transport.sendMail({
+    transport.sendMail({
       from: 'slaughterer90@gmail.com',
       to: user.email,
       subject: 'Password reset Link',

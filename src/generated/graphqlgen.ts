@@ -1037,7 +1037,7 @@ export namespace MutationResolvers {
         args: ArgsPublish,
         ctx: Context,
         info: GraphQLResolveInfo
-      ) => Job | Promise<Job>)
+      ) => string | Promise<string>)
     | {
         fragment: string;
         resolve: (
@@ -1045,7 +1045,7 @@ export namespace MutationResolvers {
           args: ArgsPublish,
           ctx: Context,
           info: GraphQLResolveInfo
-        ) => Job | Promise<Job>;
+        ) => string | Promise<string>;
       };
 
   export type UnpublishResolver =
@@ -1157,7 +1157,7 @@ export namespace MutationResolvers {
           args: ArgsPublish,
           ctx: Context,
           info: GraphQLResolveInfo
-        ) => Job | Promise<Job>)
+        ) => string | Promise<string>)
       | {
           fragment: string;
           resolve: (
@@ -1165,7 +1165,7 @@ export namespace MutationResolvers {
             args: ArgsPublish,
             ctx: Context,
             info: GraphQLResolveInfo
-          ) => Job | Promise<Job>;
+          ) => string | Promise<string>;
         };
 
     unpublish:

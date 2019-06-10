@@ -29,6 +29,9 @@ const permissions = shield({
     unpublish: or(isAdmin, isCreator), // only admin or creator can unpublish a job
     createJob: isAuthenticated // you need to me authenticated to create a job
   },
+  Query: {
+    pending: isAdmin
+  }
 });
 
 export default permissions;

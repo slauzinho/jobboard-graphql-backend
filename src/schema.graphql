@@ -1,6 +1,7 @@
 type Query {
   me: User
   jobs: [Job]!
+  pending: [Job]!
 }
 
 type Mutation {

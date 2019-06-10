@@ -42,6 +42,23 @@ export namespace QueryResolvers {
         ) => Array<Job | null> | Promise<Array<Job | null>>;
       };
 
+  export type PendingResolver =
+    | ((
+        parent: undefined,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => Array<Job | null> | Promise<Array<Job | null>>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: undefined,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => Array<Job | null> | Promise<Array<Job | null>>;
+      };
+
   export interface Type {
     me:
       | ((
@@ -61,6 +78,23 @@ export namespace QueryResolvers {
         };
 
     jobs:
+      | ((
+          parent: undefined,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => Array<Job | null> | Promise<Array<Job | null>>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: undefined,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => Array<Job | null> | Promise<Array<Job | null>>;
+        };
+
+    pending:
       | ((
           parent: undefined,
           args: {},

@@ -11,4 +11,7 @@ export const Query: QueryResolvers.Type = {
   jobs(parent, args, ctx: Context) {
     return ctx.prisma.jobs({ where: { published_at_not: null, status: 'APPROVED' } });
   },
+  pending(parent, args, ctx: Context) {
+    return ctx.prisma.jobs({where: {status: 'PENDING', published_at_not: null}});
+  }
 };

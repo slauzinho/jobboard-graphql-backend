@@ -27,10 +27,22 @@ export const auth = {
       throw new Error('Invalid email or password!');
     }
 
+    const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
+
+    ctx.response.cookie('token', token, {
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24, // 1 month
+    });
+
     return {
-      token: jwt.sign({ userId: user.id }, process.env.APP_SECRET),
+      token,
       user,
     };
+  },
+
+  async logout(_, __, ctx: Context) {
+    ctx.response.clearCookie('token');
+    return true;
   },
 
   async forgotPassword(_, { email }, ctx: Context) {
@@ -87,6 +99,13 @@ export const auth = {
     await ctx.prisma.updateUser({
       where: { id: user.id },
       data: { resetToken: null, resetTokenExpiry: null, password: newPassword },
+    });
+
+    const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
+
+    ctx.response.cookie('token', token, {
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24, // 1 month
     });
 
     return {

@@ -80,7 +80,7 @@ export default {
         .updateJob({
           data: {
             published_at: new Date(),
-            status: 'APPROVED'
+            status: 'APPROVED',
           },
           where: {
             id,
@@ -100,7 +100,7 @@ export default {
       const job = await ctx.prisma.updateJob({
         data: {
           published_at: null,
-          status: 'REMOVED'
+          status: 'REMOVED',
         },
         where: {
           id,

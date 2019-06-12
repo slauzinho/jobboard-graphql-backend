@@ -1100,6 +1100,23 @@ export namespace MutationResolvers {
         ) => AuthPayload | Promise<AuthPayload>;
       };
 
+  export type LogoutResolver =
+    | ((
+        parent: undefined,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => boolean | Promise<boolean>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: undefined,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => boolean | Promise<boolean>;
+      };
+
   export type PublishResolver =
     | ((
         parent: undefined,
@@ -1218,6 +1235,23 @@ export namespace MutationResolvers {
             ctx: Context,
             info: GraphQLResolveInfo
           ) => AuthPayload | Promise<AuthPayload>;
+        };
+
+    logout:
+      | ((
+          parent: undefined,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => boolean | Promise<boolean>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: undefined,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => boolean | Promise<boolean>;
         };
 
     publish:

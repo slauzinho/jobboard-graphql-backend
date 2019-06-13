@@ -14,7 +14,7 @@ export interface Context {
 
 export function getUserId(ctx: Context) {
   const Authorization = ctx.request.get('Authorization');
-  if (ctx.request.cookies.token) {
+  /* if (ctx.request.cookies.token) {
     const { userId } = jwt.verify(
       ctx.request.cookies.token,
       process.env.APP_SECRET
@@ -22,15 +22,15 @@ export function getUserId(ctx: Context) {
       userId: string;
     };
     return userId;
-  }
-  /* if (Authorization) {
+  } */
+  if (Authorization) {
     const token = Authorization.replace('Bearer ', '');
     const { userId } = jwt.verify(token, process.env.APP_SECRET) as {
       userId: string;
     };
     return userId;
   }
- */
+
   throw new AuthError();
 }
 

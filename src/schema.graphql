@@ -39,7 +39,7 @@ type AuthPayload {
 type User {
   id: ID!
   email: String!
-  jobs: [Job]!
+  jobs: [Job!]!
 }
 
 type City {
@@ -62,16 +62,17 @@ type Job {
   categories: [Category!]!
   tags: [Tag]!
   status: String!
+  shortDescription: String!
 }
 
 type Category {
   id: ID!
   name: String!
-  jobs: [Job]
+  jobs: [Job]!
 }
 
 type Tag {
   id: ID!
   name: String!
-  jobs: [Job]
+  jobs: [Job]!
 }

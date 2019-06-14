@@ -438,6 +438,7 @@ type Job {
   createdAt: DateTime!
   updatedAt: DateTime!
   status: Status!
+  shortDescription: String!
 }
 
 type JobConnection {
@@ -459,6 +460,7 @@ input JobCreateInput {
   categories: CategoryCreateManyWithoutJobsInput
   tags: TagCreateManyWithoutJobsInput
   status: Status
+  shortDescription: String!
 }
 
 input JobCreateManyWithoutCategoriesInput {
@@ -488,6 +490,7 @@ input JobCreateWithoutCategoriesInput {
   published_at: DateTime
   tags: TagCreateManyWithoutJobsInput
   status: Status
+  shortDescription: String!
 }
 
 input JobCreateWithoutCityInput {
@@ -502,6 +505,7 @@ input JobCreateWithoutCityInput {
   categories: CategoryCreateManyWithoutJobsInput
   tags: TagCreateManyWithoutJobsInput
   status: Status
+  shortDescription: String!
 }
 
 input JobCreateWithoutTagsInput {
@@ -516,6 +520,7 @@ input JobCreateWithoutTagsInput {
   published_at: DateTime
   categories: CategoryCreateManyWithoutJobsInput
   status: Status
+  shortDescription: String!
 }
 
 type JobEdge {
@@ -544,6 +549,8 @@ enum JobOrderByInput {
   updatedAt_DESC
   status_ASC
   status_DESC
+  shortDescription_ASC
+  shortDescription_DESC
 }
 
 type JobPreviousValues {
@@ -557,6 +564,7 @@ type JobPreviousValues {
   createdAt: DateTime!
   updatedAt: DateTime!
   status: Status!
+  shortDescription: String!
 }
 
 input JobScalarWhereInput {
@@ -672,6 +680,20 @@ input JobScalarWhereInput {
   status_not: Status
   status_in: [Status!]
   status_not_in: [Status!]
+  shortDescription: String
+  shortDescription_not: String
+  shortDescription_in: [String!]
+  shortDescription_not_in: [String!]
+  shortDescription_lt: String
+  shortDescription_lte: String
+  shortDescription_gt: String
+  shortDescription_gte: String
+  shortDescription_contains: String
+  shortDescription_not_contains: String
+  shortDescription_starts_with: String
+  shortDescription_not_starts_with: String
+  shortDescription_ends_with: String
+  shortDescription_not_ends_with: String
   AND: [JobScalarWhereInput!]
   OR: [JobScalarWhereInput!]
   NOT: [JobScalarWhereInput!]
@@ -707,6 +729,7 @@ input JobUpdateInput {
   categories: CategoryUpdateManyWithoutJobsInput
   tags: TagUpdateManyWithoutJobsInput
   status: Status
+  shortDescription: String
 }
 
 input JobUpdateManyDataInput {
@@ -717,6 +740,7 @@ input JobUpdateManyDataInput {
   slug: String
   published_at: DateTime
   status: Status
+  shortDescription: String
 }
 
 input JobUpdateManyMutationInput {
@@ -727,6 +751,7 @@ input JobUpdateManyMutationInput {
   slug: String
   published_at: DateTime
   status: Status
+  shortDescription: String
 }
 
 input JobUpdateManyWithoutCategoriesInput {
@@ -781,6 +806,7 @@ input JobUpdateWithoutCategoriesDataInput {
   published_at: DateTime
   tags: TagUpdateManyWithoutJobsInput
   status: Status
+  shortDescription: String
 }
 
 input JobUpdateWithoutCityDataInput {
@@ -794,6 +820,7 @@ input JobUpdateWithoutCityDataInput {
   categories: CategoryUpdateManyWithoutJobsInput
   tags: TagUpdateManyWithoutJobsInput
   status: Status
+  shortDescription: String
 }
 
 input JobUpdateWithoutTagsDataInput {
@@ -807,6 +834,7 @@ input JobUpdateWithoutTagsDataInput {
   published_at: DateTime
   categories: CategoryUpdateManyWithoutJobsInput
   status: Status
+  shortDescription: String
 }
 
 input JobUpdateWithWhereUniqueWithoutCategoriesInput {
@@ -963,6 +991,20 @@ input JobWhereInput {
   status_not: Status
   status_in: [Status!]
   status_not_in: [Status!]
+  shortDescription: String
+  shortDescription_not: String
+  shortDescription_in: [String!]
+  shortDescription_not_in: [String!]
+  shortDescription_lt: String
+  shortDescription_lte: String
+  shortDescription_gt: String
+  shortDescription_gte: String
+  shortDescription_contains: String
+  shortDescription_not_contains: String
+  shortDescription_starts_with: String
+  shortDescription_not_starts_with: String
+  shortDescription_ends_with: String
+  shortDescription_not_ends_with: String
   AND: [JobWhereInput!]
   OR: [JobWhereInput!]
   NOT: [JobWhereInput!]

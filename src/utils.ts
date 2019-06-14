@@ -65,3 +65,9 @@ export function transform(job: any) {
     city: job.city.name,
   };
 }
+
+export function makeShortDescription(htmlDescription: string): string {
+  const stripedHtml = htmlDescription.replace(/<[^>]+>/g, '');
+
+  return stripedHtml.substring(0, 100) + '...';
+}

@@ -1,5 +1,5 @@
 import slugify from 'slugify';
-import { Context, transform } from '../../utils';
+import { Context, transform, makeShortDescription } from '../../utils';
 import console = require('console');
 
 async function getSlug(
@@ -44,6 +44,7 @@ export default {
           connect: input.tags!.map(c => ({ name: c })),
         },
         slug,
+        shortDescription: makeShortDescription(input.description),
         published_at: ctx.user.permission === 'ADMIN' ? new Date() : null,
         status: ctx.user.permission === 'ADMIN' ? 'APPROVED' : 'PENDING',
       });
@@ -63,6 +64,7 @@ export default {
           url
           description
           slug
+          shortDescription
           city {
             name
             lat

@@ -1,13 +1,13 @@
 enum Permission {
-  BASIC,
+  BASIC
   ADMIN
 }
 
 enum Status {
-  EXPIRED,
-  REJECTED,
-  PENDING,
-  APPROVED,
+  EXPIRED
+  REJECTED
+  PENDING
+  APPROVED
   REMOVED
 }
 
@@ -17,7 +17,7 @@ type User {
   email: String! @unique
   permission: Permission! @default(value: BASIC)
   resetToken: String @unique
-  resetTokenExpiry: Float 
+  resetTokenExpiry: Float
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
@@ -60,4 +60,5 @@ type Job {
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
   status: Status! @default(value: PENDING)
+  shortDescription: String!
 }

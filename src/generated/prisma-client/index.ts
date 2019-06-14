@@ -286,7 +286,9 @@ export type JobOrderByInput =
   | "updatedAt_ASC"
   | "updatedAt_DESC"
   | "status_ASC"
-  | "status_DESC";
+  | "status_DESC"
+  | "shortDescription_ASC"
+  | "shortDescription_DESC";
 
 export type CategoryOrderByInput =
   | "id_ASC"
@@ -714,6 +716,7 @@ export interface JobUpdateWithoutCategoriesDataInput {
   published_at?: Maybe<DateTimeInput>;
   tags?: Maybe<TagUpdateManyWithoutJobsInput>;
   status?: Maybe<Status>;
+  shortDescription?: Maybe<String>;
 }
 
 export interface JobUpsertWithWhereUniqueWithoutTagsInput {
@@ -850,6 +853,20 @@ export interface JobWhereInput {
   status_not?: Maybe<Status>;
   status_in?: Maybe<Status[] | Status>;
   status_not_in?: Maybe<Status[] | Status>;
+  shortDescription?: Maybe<String>;
+  shortDescription_not?: Maybe<String>;
+  shortDescription_in?: Maybe<String[] | String>;
+  shortDescription_not_in?: Maybe<String[] | String>;
+  shortDescription_lt?: Maybe<String>;
+  shortDescription_lte?: Maybe<String>;
+  shortDescription_gt?: Maybe<String>;
+  shortDescription_gte?: Maybe<String>;
+  shortDescription_contains?: Maybe<String>;
+  shortDescription_not_contains?: Maybe<String>;
+  shortDescription_starts_with?: Maybe<String>;
+  shortDescription_not_starts_with?: Maybe<String>;
+  shortDescription_ends_with?: Maybe<String>;
+  shortDescription_not_ends_with?: Maybe<String>;
   AND?: Maybe<JobWhereInput[] | JobWhereInput>;
   OR?: Maybe<JobWhereInput[] | JobWhereInput>;
   NOT?: Maybe<JobWhereInput[] | JobWhereInput>;
@@ -896,6 +913,7 @@ export interface JobCreateWithoutTagsInput {
   published_at?: Maybe<DateTimeInput>;
   categories?: Maybe<CategoryCreateManyWithoutJobsInput>;
   status?: Maybe<Status>;
+  shortDescription: String;
 }
 
 export interface UserUpdateDataInput {
@@ -924,6 +942,7 @@ export interface JobUpdateManyMutationInput {
   slug?: Maybe<String>;
   published_at?: Maybe<DateTimeInput>;
   status?: Maybe<Status>;
+  shortDescription?: Maybe<String>;
 }
 
 export interface TagUpdateManyWithoutJobsInput {
@@ -1033,6 +1052,7 @@ export interface JobCreateWithoutCategoriesInput {
   published_at?: Maybe<DateTimeInput>;
   tags?: Maybe<TagCreateManyWithoutJobsInput>;
   status?: Maybe<Status>;
+  shortDescription: String;
 }
 
 export interface CategoryScalarWhereInput {
@@ -1224,6 +1244,20 @@ export interface JobScalarWhereInput {
   status_not?: Maybe<Status>;
   status_in?: Maybe<Status[] | Status>;
   status_not_in?: Maybe<Status[] | Status>;
+  shortDescription?: Maybe<String>;
+  shortDescription_not?: Maybe<String>;
+  shortDescription_in?: Maybe<String[] | String>;
+  shortDescription_not_in?: Maybe<String[] | String>;
+  shortDescription_lt?: Maybe<String>;
+  shortDescription_lte?: Maybe<String>;
+  shortDescription_gt?: Maybe<String>;
+  shortDescription_gte?: Maybe<String>;
+  shortDescription_contains?: Maybe<String>;
+  shortDescription_not_contains?: Maybe<String>;
+  shortDescription_starts_with?: Maybe<String>;
+  shortDescription_not_starts_with?: Maybe<String>;
+  shortDescription_ends_with?: Maybe<String>;
+  shortDescription_not_ends_with?: Maybe<String>;
   AND?: Maybe<JobScalarWhereInput[] | JobScalarWhereInput>;
   OR?: Maybe<JobScalarWhereInput[] | JobScalarWhereInput>;
   NOT?: Maybe<JobScalarWhereInput[] | JobScalarWhereInput>;
@@ -1249,6 +1283,7 @@ export interface JobUpdateWithoutTagsDataInput {
   published_at?: Maybe<DateTimeInput>;
   categories?: Maybe<CategoryUpdateManyWithoutJobsInput>;
   status?: Maybe<Status>;
+  shortDescription?: Maybe<String>;
 }
 
 export interface JobUpdateManyDataInput {
@@ -1259,6 +1294,7 @@ export interface JobUpdateManyDataInput {
   slug?: Maybe<String>;
   published_at?: Maybe<DateTimeInput>;
   status?: Maybe<Status>;
+  shortDescription?: Maybe<String>;
 }
 
 export interface TagUpdateInput {
@@ -1293,6 +1329,7 @@ export interface JobCreateInput {
   categories?: Maybe<CategoryCreateManyWithoutJobsInput>;
   tags?: Maybe<TagCreateManyWithoutJobsInput>;
   status?: Maybe<Status>;
+  shortDescription: String;
 }
 
 export interface CategoryUpdateWithWhereUniqueWithoutJobsInput {
@@ -1347,6 +1384,7 @@ export interface JobCreateWithoutCityInput {
   categories?: Maybe<CategoryCreateManyWithoutJobsInput>;
   tags?: Maybe<TagCreateManyWithoutJobsInput>;
   status?: Maybe<Status>;
+  shortDescription: String;
 }
 
 export interface JobCreateManyWithoutTagsInput {
@@ -1388,6 +1426,7 @@ export interface JobUpdateWithoutCityDataInput {
   categories?: Maybe<CategoryUpdateManyWithoutJobsInput>;
   tags?: Maybe<TagUpdateManyWithoutJobsInput>;
   status?: Maybe<Status>;
+  shortDescription?: Maybe<String>;
 }
 
 export interface JobUpdateWithWhereUniqueWithoutCityInput {
@@ -1450,6 +1489,7 @@ export interface JobUpdateInput {
   categories?: Maybe<CategoryUpdateManyWithoutJobsInput>;
   tags?: Maybe<TagUpdateManyWithoutJobsInput>;
   status?: Maybe<Status>;
+  shortDescription?: Maybe<String>;
 }
 
 export interface JobUpdateManyWithoutTagsInput {
@@ -1541,6 +1581,7 @@ export interface JobPreviousValues {
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
   status: Status;
+  shortDescription: String;
 }
 
 export interface JobPreviousValuesPromise
@@ -1556,6 +1597,7 @@ export interface JobPreviousValuesPromise
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
   status: () => Promise<Status>;
+  shortDescription: () => Promise<String>;
 }
 
 export interface JobPreviousValuesSubscription
@@ -1571,6 +1613,7 @@ export interface JobPreviousValuesSubscription
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   status: () => Promise<AsyncIterator<Status>>;
+  shortDescription: () => Promise<AsyncIterator<String>>;
 }
 
 export interface CityConnection {
@@ -2294,6 +2337,7 @@ export interface Job {
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
   status: Status;
+  shortDescription: String;
 }
 
 export interface JobPromise extends Promise<Job>, Fragmentable {
@@ -2327,6 +2371,7 @@ export interface JobPromise extends Promise<Job>, Fragmentable {
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
   status: () => Promise<Status>;
+  shortDescription: () => Promise<String>;
 }
 
 export interface JobSubscription
@@ -2362,6 +2407,7 @@ export interface JobSubscription
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   status: () => Promise<AsyncIterator<Status>>;
+  shortDescription: () => Promise<AsyncIterator<String>>;
 }
 
 export interface JobNullablePromise extends Promise<Job | null>, Fragmentable {
@@ -2395,6 +2441,7 @@ export interface JobNullablePromise extends Promise<Job | null>, Fragmentable {
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
   status: () => Promise<Status>;
+  shortDescription: () => Promise<String>;
 }
 
 /*

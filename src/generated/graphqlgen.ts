@@ -159,7 +159,7 @@ export namespace UserResolvers {
         args: {},
         ctx: Context,
         info: GraphQLResolveInfo
-      ) => Array<Job | null> | Promise<Array<Job | null>>)
+      ) => Job[] | Promise<Job[]>)
     | {
         fragment: string;
         resolve: (
@@ -167,7 +167,7 @@ export namespace UserResolvers {
           args: {},
           ctx: Context,
           info: GraphQLResolveInfo
-        ) => Array<Job | null> | Promise<Array<Job | null>>;
+        ) => Job[] | Promise<Job[]>;
       };
 
   export interface Type {
@@ -211,7 +211,7 @@ export namespace UserResolvers {
           args: {},
           ctx: Context,
           info: GraphQLResolveInfo
-        ) => Array<Job | null> | Promise<Array<Job | null>>)
+        ) => Job[] | Promise<Job[]>)
       | {
           fragment: string;
           resolve: (
@@ -219,7 +219,7 @@ export namespace UserResolvers {
             args: {},
             ctx: Context,
             info: GraphQLResolveInfo
-          ) => Array<Job | null> | Promise<Array<Job | null>>;
+          ) => Job[] | Promise<Job[]>;
         };
   }
 }
@@ -234,7 +234,8 @@ export namespace JobResolvers {
     slug: (parent: Job) => parent.slug,
     published_at: (parent: Job) =>
       parent.published_at === undefined ? null : parent.published_at,
-    status: (parent: Job) => parent.status
+    status: (parent: Job) => parent.status,
+    shortDescription: (parent: Job) => parent.shortDescription
   };
 
   export type IdResolver =
@@ -424,6 +425,23 @@ export namespace JobResolvers {
         ) => string | Promise<string>;
       };
 
+  export type ShortDescriptionResolver =
+    | ((
+        parent: Job,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | Promise<string>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: Job,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>;
+      };
+
   export interface Type {
     id:
       | ((
@@ -596,6 +614,23 @@ export namespace JobResolvers {
         };
 
     status:
+      | ((
+          parent: Job,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: Job,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | Promise<string>;
+        };
+
+    shortDescription:
       | ((
           parent: Job,
           args: {},
@@ -842,7 +877,7 @@ export namespace CategoryResolvers {
         args: {},
         ctx: Context,
         info: GraphQLResolveInfo
-      ) => Array<Job | null> | null | Promise<Array<Job | null> | null>)
+      ) => Array<Job | null> | Promise<Array<Job | null>>)
     | {
         fragment: string;
         resolve: (
@@ -850,7 +885,7 @@ export namespace CategoryResolvers {
           args: {},
           ctx: Context,
           info: GraphQLResolveInfo
-        ) => Array<Job | null> | null | Promise<Array<Job | null> | null>;
+        ) => Array<Job | null> | Promise<Array<Job | null>>;
       };
 
   export interface Type {
@@ -894,7 +929,7 @@ export namespace CategoryResolvers {
           args: {},
           ctx: Context,
           info: GraphQLResolveInfo
-        ) => Array<Job | null> | null | Promise<Array<Job | null> | null>)
+        ) => Array<Job | null> | Promise<Array<Job | null>>)
       | {
           fragment: string;
           resolve: (
@@ -902,7 +937,7 @@ export namespace CategoryResolvers {
             args: {},
             ctx: Context,
             info: GraphQLResolveInfo
-          ) => Array<Job | null> | null | Promise<Array<Job | null> | null>;
+          ) => Array<Job | null> | Promise<Array<Job | null>>;
         };
   }
 }
@@ -953,7 +988,7 @@ export namespace TagResolvers {
         args: {},
         ctx: Context,
         info: GraphQLResolveInfo
-      ) => Array<Job | null> | null | Promise<Array<Job | null> | null>)
+      ) => Array<Job | null> | Promise<Array<Job | null>>)
     | {
         fragment: string;
         resolve: (
@@ -961,7 +996,7 @@ export namespace TagResolvers {
           args: {},
           ctx: Context,
           info: GraphQLResolveInfo
-        ) => Array<Job | null> | null | Promise<Array<Job | null> | null>;
+        ) => Array<Job | null> | Promise<Array<Job | null>>;
       };
 
   export interface Type {
@@ -1005,7 +1040,7 @@ export namespace TagResolvers {
           args: {},
           ctx: Context,
           info: GraphQLResolveInfo
-        ) => Array<Job | null> | null | Promise<Array<Job | null> | null>)
+        ) => Array<Job | null> | Promise<Array<Job | null>>)
       | {
           fragment: string;
           resolve: (
@@ -1013,7 +1048,7 @@ export namespace TagResolvers {
             args: {},
             ctx: Context,
             info: GraphQLResolveInfo
-          ) => Array<Job | null> | null | Promise<Array<Job | null> | null>;
+          ) => Array<Job | null> | Promise<Array<Job | null>>;
         };
   }
 }

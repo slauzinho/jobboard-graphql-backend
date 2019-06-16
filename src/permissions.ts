@@ -28,6 +28,8 @@ const permissions = shield({
     publish: isAdmin, // only admin can publish jobs
     unpublish: or(isAdmin, isCreator), // only admin or creator can unpublish a job
     createJob: isAuthenticated, // you need to me authenticated to create a job
+    updateJob: or(isAdmin, isCreator), // only the creator or admin can edit
+    deleteJob: or(isAdmin, isCreator), // only the creator or admin can delete
   },
   Query: {
     pending: isAdmin,

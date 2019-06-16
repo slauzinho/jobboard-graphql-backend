@@ -1070,6 +1070,13 @@ export namespace MutationResolvers {
     password: string;
     repeatPassword: string;
   }
+  export interface jobUpdateInput {
+    url?: string | null;
+    description: string;
+    city: string;
+    categories: string[];
+    tags: Array<string | null>;
+  }
 
   export interface ArgsSignup {
     email: string;
@@ -1099,6 +1106,15 @@ export namespace MutationResolvers {
 
   export interface ArgsResetPassword {
     input?: ResetPasswordInput | null;
+  }
+
+  export interface ArgsUpdateJob {
+    id: string;
+    input: jobUpdateInput;
+  }
+
+  export interface ArgsDeleteJob {
+    id: string;
   }
 
   export type SignupResolver =
@@ -1237,6 +1253,40 @@ export namespace MutationResolvers {
         ) => AuthPayload | Promise<AuthPayload>;
       };
 
+  export type UpdateJobResolver =
+    | ((
+        parent: undefined,
+        args: ArgsUpdateJob,
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => Job | Promise<Job>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: undefined,
+          args: ArgsUpdateJob,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => Job | Promise<Job>;
+      };
+
+  export type DeleteJobResolver =
+    | ((
+        parent: undefined,
+        args: ArgsDeleteJob,
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | Promise<string>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: undefined,
+          args: ArgsDeleteJob,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>;
+      };
+
   export interface Type {
     signup:
       | ((
@@ -1372,6 +1422,40 @@ export namespace MutationResolvers {
             ctx: Context,
             info: GraphQLResolveInfo
           ) => AuthPayload | Promise<AuthPayload>;
+        };
+
+    updateJob:
+      | ((
+          parent: undefined,
+          args: ArgsUpdateJob,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => Job | Promise<Job>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: undefined,
+            args: ArgsUpdateJob,
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => Job | Promise<Job>;
+        };
+
+    deleteJob:
+      | ((
+          parent: undefined,
+          args: ArgsDeleteJob,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: undefined,
+            args: ArgsDeleteJob,
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | Promise<string>;
         };
   }
 }

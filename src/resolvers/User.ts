@@ -7,6 +7,8 @@ export const User: UserResolvers.Type = {
   jobs: async (parent, args, ctx: Context) => {
     const userId = getUserId(ctx);
 
-    return ctx.prisma.jobs({ where: { creator: { id: userId } } });
+    return ctx.prisma.jobs({
+      where: { creator: { id: userId }, status_not: 'REMOVED' },
+    });
   },
 };

@@ -13,12 +13,22 @@ type Mutation {
   createJob(input: JobCreateInput): Job!
   forgotPassword(email: String!): Boolean!
   resetPassword(input: ResetPasswordInput): AuthPayload!
+  updateJob(id: ID!, input: jobUpdateInput!): Job!
+  deleteJob(id: ID!): String!
 }
 
 input ResetPasswordInput {
   resetToken: String!
   password: String!
   repeatPassword: String!
+}
+
+input jobUpdateInput {
+  url: String
+  description: String!
+  city: String!
+  categories: [String!]!
+  tags: [String]!
 }
 
 input JobCreateInput {

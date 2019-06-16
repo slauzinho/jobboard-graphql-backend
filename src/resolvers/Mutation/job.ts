@@ -54,6 +54,39 @@ export default {
       throw new Error('Error trying to create job!');
     }
   },
+  updateJob: async (parent, { id, input }, ctx: Context) => {
+    const job = await ctx.prisma.updateJob({
+      data: {
+        ...input,
+        city: {
+          connect: {
+            name: input.city,
+          },
+        },
+        categories: {
+          connect: input.categories.map(c => ({ id: c })),
+        },
+        tags: {
+          connect: input.tags!.map(c => ({ name: c })),
+        },
+        shortDescription: makeShortDescription(input.description),
+        status: ctx.user.permission === 'ADMIN' ? 'APPROVED' : 'PENDING',
+      },
+      where: { id },
+    });
+
+    return job;
+  },
+  deleteJob: async (parent, { id }, ctx: Context) => {
+    await ctx.prisma.updateJob({
+      data: {
+        status: 'REMOVED',
+      },
+      where: { id },
+    });
+
+    return 'Job removed';
+  },
   async publish(parent, { id }, ctx: Context) {
     try {
       const fragment = `

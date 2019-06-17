@@ -544,6 +544,23 @@ export namespace JobResolvers {
         ) => string | Promise<string>;
       };
 
+  export type EmailResolver =
+    | ((
+        parent: Job,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | null | Promise<string | null>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: Job,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | null | Promise<string | null>;
+      };
+
   export interface Type {
     id:
       | ((
@@ -747,6 +764,23 @@ export namespace JobResolvers {
             ctx: Context,
             info: GraphQLResolveInfo
           ) => string | Promise<string>;
+        };
+
+    email:
+      | ((
+          parent: Job,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | null | Promise<string | null>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: Job,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | null | Promise<string | null>;
         };
   }
 }

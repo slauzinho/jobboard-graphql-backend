@@ -76,6 +76,7 @@ type Job {
   tags: [Tag]!
   status: String!
   shortDescription: String!
+  email: String
 }
 
 type Category {

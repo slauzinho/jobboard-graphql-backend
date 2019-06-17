@@ -13,13 +13,16 @@ enum Status {
 
 type User {
   id: ID! @id
-  password: String!
+  password: String
   email: String! @unique
   permission: Permission! @default(value: BASIC)
   resetToken: String @unique
   resetTokenExpiry: Float
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
+  githubID: String @unique
+  linkdinID: String @unique
+  avatarUrl: String
 }
 
 type City {

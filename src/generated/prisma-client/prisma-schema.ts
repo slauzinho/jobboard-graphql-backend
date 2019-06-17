@@ -1293,13 +1293,16 @@ input TagWhereUniqueInput {
 
 type User {
   id: ID!
-  password: String!
+  password: String
   email: String!
   permission: Permission!
   resetToken: String
   resetTokenExpiry: Float
   createdAt: DateTime!
   updatedAt: DateTime!
+  githubID: String
+  linkdinID: String
+  avatarUrl: String
 }
 
 type UserConnection {
@@ -1310,11 +1313,14 @@ type UserConnection {
 
 input UserCreateInput {
   id: ID
-  password: String!
+  password: String
   email: String!
   permission: Permission
   resetToken: String
   resetTokenExpiry: Float
+  githubID: String
+  linkdinID: String
+  avatarUrl: String
 }
 
 input UserCreateOneInput {
@@ -1344,17 +1350,26 @@ enum UserOrderByInput {
   createdAt_DESC
   updatedAt_ASC
   updatedAt_DESC
+  githubID_ASC
+  githubID_DESC
+  linkdinID_ASC
+  linkdinID_DESC
+  avatarUrl_ASC
+  avatarUrl_DESC
 }
 
 type UserPreviousValues {
   id: ID!
-  password: String!
+  password: String
   email: String!
   permission: Permission!
   resetToken: String
   resetTokenExpiry: Float
   createdAt: DateTime!
   updatedAt: DateTime!
+  githubID: String
+  linkdinID: String
+  avatarUrl: String
 }
 
 type UserSubscriptionPayload {
@@ -1381,6 +1396,9 @@ input UserUpdateDataInput {
   permission: Permission
   resetToken: String
   resetTokenExpiry: Float
+  githubID: String
+  linkdinID: String
+  avatarUrl: String
 }
 
 input UserUpdateInput {
@@ -1389,6 +1407,9 @@ input UserUpdateInput {
   permission: Permission
   resetToken: String
   resetTokenExpiry: Float
+  githubID: String
+  linkdinID: String
+  avatarUrl: String
 }
 
 input UserUpdateManyMutationInput {
@@ -1397,6 +1418,9 @@ input UserUpdateManyMutationInput {
   permission: Permission
   resetToken: String
   resetTokenExpiry: Float
+  githubID: String
+  linkdinID: String
+  avatarUrl: String
 }
 
 input UserUpdateOneRequiredInput {
@@ -1496,6 +1520,48 @@ input UserWhereInput {
   updatedAt_lte: DateTime
   updatedAt_gt: DateTime
   updatedAt_gte: DateTime
+  githubID: String
+  githubID_not: String
+  githubID_in: [String!]
+  githubID_not_in: [String!]
+  githubID_lt: String
+  githubID_lte: String
+  githubID_gt: String
+  githubID_gte: String
+  githubID_contains: String
+  githubID_not_contains: String
+  githubID_starts_with: String
+  githubID_not_starts_with: String
+  githubID_ends_with: String
+  githubID_not_ends_with: String
+  linkdinID: String
+  linkdinID_not: String
+  linkdinID_in: [String!]
+  linkdinID_not_in: [String!]
+  linkdinID_lt: String
+  linkdinID_lte: String
+  linkdinID_gt: String
+  linkdinID_gte: String
+  linkdinID_contains: String
+  linkdinID_not_contains: String
+  linkdinID_starts_with: String
+  linkdinID_not_starts_with: String
+  linkdinID_ends_with: String
+  linkdinID_not_ends_with: String
+  avatarUrl: String
+  avatarUrl_not: String
+  avatarUrl_in: [String!]
+  avatarUrl_not_in: [String!]
+  avatarUrl_lt: String
+  avatarUrl_lte: String
+  avatarUrl_gt: String
+  avatarUrl_gte: String
+  avatarUrl_contains: String
+  avatarUrl_not_contains: String
+  avatarUrl_starts_with: String
+  avatarUrl_not_starts_with: String
+  avatarUrl_ends_with: String
+  avatarUrl_not_ends_with: String
   AND: [UserWhereInput!]
   OR: [UserWhereInput!]
   NOT: [UserWhereInput!]
@@ -1505,5 +1571,7 @@ input UserWhereUniqueInput {
   id: ID
   email: String
   resetToken: String
+  githubID: String
+  linkdinID: String
 }
 `

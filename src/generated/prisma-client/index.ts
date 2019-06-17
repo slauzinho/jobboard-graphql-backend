@@ -330,7 +330,13 @@ export type UserOrderByInput =
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
-  | "updatedAt_DESC";
+  | "updatedAt_DESC"
+  | "githubID_ASC"
+  | "githubID_DESC"
+  | "linkdinID_ASC"
+  | "linkdinID_DESC"
+  | "avatarUrl_ASC"
+  | "avatarUrl_DESC";
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
@@ -505,6 +511,48 @@ export interface UserWhereInput {
   updatedAt_lte?: Maybe<DateTimeInput>;
   updatedAt_gt?: Maybe<DateTimeInput>;
   updatedAt_gte?: Maybe<DateTimeInput>;
+  githubID?: Maybe<String>;
+  githubID_not?: Maybe<String>;
+  githubID_in?: Maybe<String[] | String>;
+  githubID_not_in?: Maybe<String[] | String>;
+  githubID_lt?: Maybe<String>;
+  githubID_lte?: Maybe<String>;
+  githubID_gt?: Maybe<String>;
+  githubID_gte?: Maybe<String>;
+  githubID_contains?: Maybe<String>;
+  githubID_not_contains?: Maybe<String>;
+  githubID_starts_with?: Maybe<String>;
+  githubID_not_starts_with?: Maybe<String>;
+  githubID_ends_with?: Maybe<String>;
+  githubID_not_ends_with?: Maybe<String>;
+  linkdinID?: Maybe<String>;
+  linkdinID_not?: Maybe<String>;
+  linkdinID_in?: Maybe<String[] | String>;
+  linkdinID_not_in?: Maybe<String[] | String>;
+  linkdinID_lt?: Maybe<String>;
+  linkdinID_lte?: Maybe<String>;
+  linkdinID_gt?: Maybe<String>;
+  linkdinID_gte?: Maybe<String>;
+  linkdinID_contains?: Maybe<String>;
+  linkdinID_not_contains?: Maybe<String>;
+  linkdinID_starts_with?: Maybe<String>;
+  linkdinID_not_starts_with?: Maybe<String>;
+  linkdinID_ends_with?: Maybe<String>;
+  linkdinID_not_ends_with?: Maybe<String>;
+  avatarUrl?: Maybe<String>;
+  avatarUrl_not?: Maybe<String>;
+  avatarUrl_in?: Maybe<String[] | String>;
+  avatarUrl_not_in?: Maybe<String[] | String>;
+  avatarUrl_lt?: Maybe<String>;
+  avatarUrl_lte?: Maybe<String>;
+  avatarUrl_gt?: Maybe<String>;
+  avatarUrl_gte?: Maybe<String>;
+  avatarUrl_contains?: Maybe<String>;
+  avatarUrl_not_contains?: Maybe<String>;
+  avatarUrl_starts_with?: Maybe<String>;
+  avatarUrl_not_starts_with?: Maybe<String>;
+  avatarUrl_ends_with?: Maybe<String>;
+  avatarUrl_not_ends_with?: Maybe<String>;
   AND?: Maybe<UserWhereInput[] | UserWhereInput>;
   OR?: Maybe<UserWhereInput[] | UserWhereInput>;
   NOT?: Maybe<UserWhereInput[] | UserWhereInput>;
@@ -512,11 +560,14 @@ export interface UserWhereInput {
 
 export interface UserCreateInput {
   id?: Maybe<ID_Input>;
-  password: String;
+  password?: Maybe<String>;
   email: String;
   permission?: Maybe<Permission>;
   resetToken?: Maybe<String>;
   resetTokenExpiry?: Maybe<Float>;
+  githubID?: Maybe<String>;
+  linkdinID?: Maybe<String>;
+  avatarUrl?: Maybe<String>;
 }
 
 export interface CategoryUpdateManyWithoutJobsInput {
@@ -703,6 +754,9 @@ export interface UserUpdateInput {
   permission?: Maybe<Permission>;
   resetToken?: Maybe<String>;
   resetTokenExpiry?: Maybe<Float>;
+  githubID?: Maybe<String>;
+  linkdinID?: Maybe<String>;
+  avatarUrl?: Maybe<String>;
 }
 
 export interface JobUpdateWithoutCategoriesDataInput {
@@ -922,6 +976,9 @@ export interface UserUpdateDataInput {
   permission?: Maybe<Permission>;
   resetToken?: Maybe<String>;
   resetTokenExpiry?: Maybe<Float>;
+  githubID?: Maybe<String>;
+  linkdinID?: Maybe<String>;
+  avatarUrl?: Maybe<String>;
 }
 
 export type TagWhereUniqueInput = AtLeastOne<{
@@ -969,6 +1026,8 @@ export type UserWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
   email?: Maybe<String>;
   resetToken?: Maybe<String>;
+  githubID?: Maybe<String>;
+  linkdinID?: Maybe<String>;
 }>;
 
 export interface TagUpdateWithWhereUniqueWithoutJobsInput {
@@ -1468,6 +1527,9 @@ export interface UserUpdateManyMutationInput {
   permission?: Maybe<Permission>;
   resetToken?: Maybe<String>;
   resetTokenExpiry?: Maybe<Float>;
+  githubID?: Maybe<String>;
+  linkdinID?: Maybe<String>;
+  avatarUrl?: Maybe<String>;
 }
 
 export interface JobCreateManyWithoutCategoriesInput {
@@ -1518,13 +1580,16 @@ export interface NodeNode {
 
 export interface UserPreviousValues {
   id: ID_Output;
-  password: String;
+  password?: String;
   email: String;
   permission: Permission;
   resetToken?: String;
   resetTokenExpiry?: Float;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
+  githubID?: String;
+  linkdinID?: String;
+  avatarUrl?: String;
 }
 
 export interface UserPreviousValuesPromise
@@ -1538,6 +1603,9 @@ export interface UserPreviousValuesPromise
   resetTokenExpiry: () => Promise<Float>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
+  githubID: () => Promise<String>;
+  linkdinID: () => Promise<String>;
+  avatarUrl: () => Promise<String>;
 }
 
 export interface UserPreviousValuesSubscription
@@ -1551,6 +1619,9 @@ export interface UserPreviousValuesSubscription
   resetTokenExpiry: () => Promise<AsyncIterator<Float>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  githubID: () => Promise<AsyncIterator<String>>;
+  linkdinID: () => Promise<AsyncIterator<String>>;
+  avatarUrl: () => Promise<AsyncIterator<String>>;
 }
 
 export interface CityEdge {
@@ -2166,13 +2237,16 @@ export interface JobSubscriptionPayloadSubscription
 
 export interface User {
   id: ID_Output;
-  password: String;
+  password?: String;
   email: String;
   permission: Permission;
   resetToken?: String;
   resetTokenExpiry?: Float;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
+  githubID?: String;
+  linkdinID?: String;
+  avatarUrl?: String;
 }
 
 export interface UserPromise extends Promise<User>, Fragmentable {
@@ -2184,6 +2258,9 @@ export interface UserPromise extends Promise<User>, Fragmentable {
   resetTokenExpiry: () => Promise<Float>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
+  githubID: () => Promise<String>;
+  linkdinID: () => Promise<String>;
+  avatarUrl: () => Promise<String>;
 }
 
 export interface UserSubscription
@@ -2197,6 +2274,9 @@ export interface UserSubscription
   resetTokenExpiry: () => Promise<AsyncIterator<Float>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  githubID: () => Promise<AsyncIterator<String>>;
+  linkdinID: () => Promise<AsyncIterator<String>>;
+  avatarUrl: () => Promise<AsyncIterator<String>>;
 }
 
 export interface UserNullablePromise
@@ -2210,6 +2290,9 @@ export interface UserNullablePromise
   resetTokenExpiry: () => Promise<Float>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
+  githubID: () => Promise<String>;
+  linkdinID: () => Promise<String>;
+  avatarUrl: () => Promise<String>;
 }
 
 export interface CityPreviousValues {

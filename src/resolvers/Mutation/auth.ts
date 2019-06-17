@@ -2,7 +2,7 @@ import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
 import { randomBytes } from 'crypto';
 import { promisify } from 'util';
-import { Context } from '../../utils';
+import { Context, createToken } from '../../utils';
 import { transport, makeEmail } from '../../mail';
 
 export const auth = {
@@ -11,7 +11,7 @@ export const auth = {
     const user = await ctx.prisma.createUser({ ...args, password });
 
     return {
-      token: jwt.sign({ userId: user.id }, process.env.APP_SECRET),
+      token: createToken(user.id),
       user,
     };
   },
@@ -30,7 +30,7 @@ export const auth = {
     const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
 
     ctx.response.cookie('token', token, {
-      httpOnly: false,
+      httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24, // 1 month
     });
 

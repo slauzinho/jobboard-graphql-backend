@@ -2,6 +2,7 @@ import * as jwt from 'jsonwebtoken';
 import { Prisma, User } from './generated/prisma-client';
 import algoliasearch = require('algoliasearch');
 import console = require('console');
+import { string } from 'yup';
 
 export interface Context {
   prisma: Prisma;
@@ -13,8 +14,7 @@ export interface Context {
 }
 
 export function getUserId(ctx: Context) {
-  const Authorization = ctx.request.get('Authorization');
-  /* if (ctx.request.cookies.token) {
+  if (ctx.request.cookies.token) {
     const { userId } = jwt.verify(
       ctx.request.cookies.token,
       process.env.APP_SECRET
@@ -22,7 +22,8 @@ export function getUserId(ctx: Context) {
       userId: string;
     };
     return userId;
-  } */
+  }
+  const Authorization = ctx.request.get('Authorization');
   if (Authorization) {
     const token = Authorization.replace('Bearer ', '');
     const { userId } = jwt.verify(token, process.env.APP_SECRET) as {
@@ -70,4 +71,8 @@ export function makeShortDescription(htmlDescription: string): string {
   const stripedHtml = htmlDescription.replace(/<[^>]+>/g, '');
 
   return stripedHtml.substring(0, 100) + '...';
+}
+
+export function createToken(id: string) {
+  return jwt.sign({ userId: id }, process.env.APP_SECRET);
 }

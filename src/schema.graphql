@@ -4,6 +4,7 @@ type Query {
   pending: [Job]!
   categories: [Category]!
   tags: [Tag]!
+  cities: [City]!
 }
 
 type Mutation {

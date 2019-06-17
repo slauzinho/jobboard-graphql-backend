@@ -93,6 +93,23 @@ export namespace QueryResolvers {
         ) => Array<Tag | null> | Promise<Array<Tag | null>>;
       };
 
+  export type CitiesResolver =
+    | ((
+        parent: undefined,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => Array<City | null> | Promise<Array<City | null>>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: undefined,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => Array<City | null> | Promise<Array<City | null>>;
+      };
+
   export interface Type {
     me:
       | ((
@@ -177,6 +194,23 @@ export namespace QueryResolvers {
             ctx: Context,
             info: GraphQLResolveInfo
           ) => Array<Tag | null> | Promise<Array<Tag | null>>;
+        };
+
+    cities:
+      | ((
+          parent: undefined,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => Array<City | null> | Promise<Array<City | null>>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: undefined,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => Array<City | null> | Promise<Array<City | null>>;
         };
   }
 }

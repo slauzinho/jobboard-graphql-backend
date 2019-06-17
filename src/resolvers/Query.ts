@@ -24,4 +24,7 @@ export const Query: QueryResolvers.Type = {
   tags(parent, args, ctx: Context) {
     return ctx.prisma.tags();
   },
+  cities(parent, args, ctx: Context) {
+    return ctx.prisma.cities();
+  },
 };

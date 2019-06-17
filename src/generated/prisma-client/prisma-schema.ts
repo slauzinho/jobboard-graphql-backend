@@ -439,6 +439,7 @@ type Job {
   updatedAt: DateTime!
   status: Status!
   shortDescription: String!
+  email: String
 }
 
 type JobConnection {
@@ -461,6 +462,7 @@ input JobCreateInput {
   tags: TagCreateManyWithoutJobsInput
   status: Status
   shortDescription: String!
+  email: String
 }
 
 input JobCreateManyWithoutCategoriesInput {
@@ -491,6 +493,7 @@ input JobCreateWithoutCategoriesInput {
   tags: TagCreateManyWithoutJobsInput
   status: Status
   shortDescription: String!
+  email: String
 }
 
 input JobCreateWithoutCityInput {
@@ -506,6 +509,7 @@ input JobCreateWithoutCityInput {
   tags: TagCreateManyWithoutJobsInput
   status: Status
   shortDescription: String!
+  email: String
 }
 
 input JobCreateWithoutTagsInput {
@@ -521,6 +525,7 @@ input JobCreateWithoutTagsInput {
   categories: CategoryCreateManyWithoutJobsInput
   status: Status
   shortDescription: String!
+  email: String
 }
 
 type JobEdge {
@@ -551,6 +556,8 @@ enum JobOrderByInput {
   status_DESC
   shortDescription_ASC
   shortDescription_DESC
+  email_ASC
+  email_DESC
 }
 
 type JobPreviousValues {
@@ -565,6 +572,7 @@ type JobPreviousValues {
   updatedAt: DateTime!
   status: Status!
   shortDescription: String!
+  email: String
 }
 
 input JobScalarWhereInput {
@@ -694,6 +702,20 @@ input JobScalarWhereInput {
   shortDescription_not_starts_with: String
   shortDescription_ends_with: String
   shortDescription_not_ends_with: String
+  email: String
+  email_not: String
+  email_in: [String!]
+  email_not_in: [String!]
+  email_lt: String
+  email_lte: String
+  email_gt: String
+  email_gte: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
   AND: [JobScalarWhereInput!]
   OR: [JobScalarWhereInput!]
   NOT: [JobScalarWhereInput!]
@@ -730,6 +752,7 @@ input JobUpdateInput {
   tags: TagUpdateManyWithoutJobsInput
   status: Status
   shortDescription: String
+  email: String
 }
 
 input JobUpdateManyDataInput {
@@ -741,6 +764,7 @@ input JobUpdateManyDataInput {
   published_at: DateTime
   status: Status
   shortDescription: String
+  email: String
 }
 
 input JobUpdateManyMutationInput {
@@ -752,6 +776,7 @@ input JobUpdateManyMutationInput {
   published_at: DateTime
   status: Status
   shortDescription: String
+  email: String
 }
 
 input JobUpdateManyWithoutCategoriesInput {
@@ -807,6 +832,7 @@ input JobUpdateWithoutCategoriesDataInput {
   tags: TagUpdateManyWithoutJobsInput
   status: Status
   shortDescription: String
+  email: String
 }
 
 input JobUpdateWithoutCityDataInput {
@@ -821,6 +847,7 @@ input JobUpdateWithoutCityDataInput {
   tags: TagUpdateManyWithoutJobsInput
   status: Status
   shortDescription: String
+  email: String
 }
 
 input JobUpdateWithoutTagsDataInput {
@@ -835,6 +862,7 @@ input JobUpdateWithoutTagsDataInput {
   categories: CategoryUpdateManyWithoutJobsInput
   status: Status
   shortDescription: String
+  email: String
 }
 
 input JobUpdateWithWhereUniqueWithoutCategoriesInput {
@@ -1005,6 +1033,20 @@ input JobWhereInput {
   shortDescription_not_starts_with: String
   shortDescription_ends_with: String
   shortDescription_not_ends_with: String
+  email: String
+  email_not: String
+  email_in: [String!]
+  email_not_in: [String!]
+  email_lt: String
+  email_lte: String
+  email_gt: String
+  email_gte: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
   AND: [JobWhereInput!]
   OR: [JobWhereInput!]
   NOT: [JobWhereInput!]

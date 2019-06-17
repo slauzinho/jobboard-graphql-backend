@@ -288,7 +288,9 @@ export type JobOrderByInput =
   | "status_ASC"
   | "status_DESC"
   | "shortDescription_ASC"
-  | "shortDescription_DESC";
+  | "shortDescription_DESC"
+  | "email_ASC"
+  | "email_DESC";
 
 export type CategoryOrderByInput =
   | "id_ASC"
@@ -771,6 +773,7 @@ export interface JobUpdateWithoutCategoriesDataInput {
   tags?: Maybe<TagUpdateManyWithoutJobsInput>;
   status?: Maybe<Status>;
   shortDescription?: Maybe<String>;
+  email?: Maybe<String>;
 }
 
 export interface JobUpsertWithWhereUniqueWithoutTagsInput {
@@ -921,6 +924,20 @@ export interface JobWhereInput {
   shortDescription_not_starts_with?: Maybe<String>;
   shortDescription_ends_with?: Maybe<String>;
   shortDescription_not_ends_with?: Maybe<String>;
+  email?: Maybe<String>;
+  email_not?: Maybe<String>;
+  email_in?: Maybe<String[] | String>;
+  email_not_in?: Maybe<String[] | String>;
+  email_lt?: Maybe<String>;
+  email_lte?: Maybe<String>;
+  email_gt?: Maybe<String>;
+  email_gte?: Maybe<String>;
+  email_contains?: Maybe<String>;
+  email_not_contains?: Maybe<String>;
+  email_starts_with?: Maybe<String>;
+  email_not_starts_with?: Maybe<String>;
+  email_ends_with?: Maybe<String>;
+  email_not_ends_with?: Maybe<String>;
   AND?: Maybe<JobWhereInput[] | JobWhereInput>;
   OR?: Maybe<JobWhereInput[] | JobWhereInput>;
   NOT?: Maybe<JobWhereInput[] | JobWhereInput>;
@@ -968,6 +985,7 @@ export interface JobCreateWithoutTagsInput {
   categories?: Maybe<CategoryCreateManyWithoutJobsInput>;
   status?: Maybe<Status>;
   shortDescription: String;
+  email?: Maybe<String>;
 }
 
 export interface UserUpdateDataInput {
@@ -1000,6 +1018,7 @@ export interface JobUpdateManyMutationInput {
   published_at?: Maybe<DateTimeInput>;
   status?: Maybe<Status>;
   shortDescription?: Maybe<String>;
+  email?: Maybe<String>;
 }
 
 export interface TagUpdateManyWithoutJobsInput {
@@ -1112,6 +1131,7 @@ export interface JobCreateWithoutCategoriesInput {
   tags?: Maybe<TagCreateManyWithoutJobsInput>;
   status?: Maybe<Status>;
   shortDescription: String;
+  email?: Maybe<String>;
 }
 
 export interface CategoryScalarWhereInput {
@@ -1317,6 +1337,20 @@ export interface JobScalarWhereInput {
   shortDescription_not_starts_with?: Maybe<String>;
   shortDescription_ends_with?: Maybe<String>;
   shortDescription_not_ends_with?: Maybe<String>;
+  email?: Maybe<String>;
+  email_not?: Maybe<String>;
+  email_in?: Maybe<String[] | String>;
+  email_not_in?: Maybe<String[] | String>;
+  email_lt?: Maybe<String>;
+  email_lte?: Maybe<String>;
+  email_gt?: Maybe<String>;
+  email_gte?: Maybe<String>;
+  email_contains?: Maybe<String>;
+  email_not_contains?: Maybe<String>;
+  email_starts_with?: Maybe<String>;
+  email_not_starts_with?: Maybe<String>;
+  email_ends_with?: Maybe<String>;
+  email_not_ends_with?: Maybe<String>;
   AND?: Maybe<JobScalarWhereInput[] | JobScalarWhereInput>;
   OR?: Maybe<JobScalarWhereInput[] | JobScalarWhereInput>;
   NOT?: Maybe<JobScalarWhereInput[] | JobScalarWhereInput>;
@@ -1343,6 +1377,7 @@ export interface JobUpdateWithoutTagsDataInput {
   categories?: Maybe<CategoryUpdateManyWithoutJobsInput>;
   status?: Maybe<Status>;
   shortDescription?: Maybe<String>;
+  email?: Maybe<String>;
 }
 
 export interface JobUpdateManyDataInput {
@@ -1354,6 +1389,7 @@ export interface JobUpdateManyDataInput {
   published_at?: Maybe<DateTimeInput>;
   status?: Maybe<Status>;
   shortDescription?: Maybe<String>;
+  email?: Maybe<String>;
 }
 
 export interface TagUpdateInput {
@@ -1389,6 +1425,7 @@ export interface JobCreateInput {
   tags?: Maybe<TagCreateManyWithoutJobsInput>;
   status?: Maybe<Status>;
   shortDescription: String;
+  email?: Maybe<String>;
 }
 
 export interface CategoryUpdateWithWhereUniqueWithoutJobsInput {
@@ -1444,6 +1481,7 @@ export interface JobCreateWithoutCityInput {
   tags?: Maybe<TagCreateManyWithoutJobsInput>;
   status?: Maybe<Status>;
   shortDescription: String;
+  email?: Maybe<String>;
 }
 
 export interface JobCreateManyWithoutTagsInput {
@@ -1486,6 +1524,7 @@ export interface JobUpdateWithoutCityDataInput {
   tags?: Maybe<TagUpdateManyWithoutJobsInput>;
   status?: Maybe<Status>;
   shortDescription?: Maybe<String>;
+  email?: Maybe<String>;
 }
 
 export interface JobUpdateWithWhereUniqueWithoutCityInput {
@@ -1552,6 +1591,7 @@ export interface JobUpdateInput {
   tags?: Maybe<TagUpdateManyWithoutJobsInput>;
   status?: Maybe<Status>;
   shortDescription?: Maybe<String>;
+  email?: Maybe<String>;
 }
 
 export interface JobUpdateManyWithoutTagsInput {
@@ -1653,6 +1693,7 @@ export interface JobPreviousValues {
   updatedAt: DateTimeOutput;
   status: Status;
   shortDescription: String;
+  email?: String;
 }
 
 export interface JobPreviousValuesPromise
@@ -1669,6 +1710,7 @@ export interface JobPreviousValuesPromise
   updatedAt: () => Promise<DateTimeOutput>;
   status: () => Promise<Status>;
   shortDescription: () => Promise<String>;
+  email: () => Promise<String>;
 }
 
 export interface JobPreviousValuesSubscription
@@ -1685,6 +1727,7 @@ export interface JobPreviousValuesSubscription
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   status: () => Promise<AsyncIterator<Status>>;
   shortDescription: () => Promise<AsyncIterator<String>>;
+  email: () => Promise<AsyncIterator<String>>;
 }
 
 export interface CityConnection {
@@ -2421,6 +2464,7 @@ export interface Job {
   updatedAt: DateTimeOutput;
   status: Status;
   shortDescription: String;
+  email?: String;
 }
 
 export interface JobPromise extends Promise<Job>, Fragmentable {
@@ -2455,6 +2499,7 @@ export interface JobPromise extends Promise<Job>, Fragmentable {
   updatedAt: () => Promise<DateTimeOutput>;
   status: () => Promise<Status>;
   shortDescription: () => Promise<String>;
+  email: () => Promise<String>;
 }
 
 export interface JobSubscription
@@ -2491,6 +2536,7 @@ export interface JobSubscription
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   status: () => Promise<AsyncIterator<Status>>;
   shortDescription: () => Promise<AsyncIterator<String>>;
+  email: () => Promise<AsyncIterator<String>>;
 }
 
 export interface JobNullablePromise extends Promise<Job | null>, Fragmentable {
@@ -2525,6 +2571,7 @@ export interface JobNullablePromise extends Promise<Job | null>, Fragmentable {
   updatedAt: () => Promise<DateTimeOutput>;
   status: () => Promise<Status>;
   shortDescription: () => Promise<String>;
+  email: () => Promise<String>;
 }
 
 /*

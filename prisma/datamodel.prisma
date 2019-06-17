@@ -64,4 +64,5 @@ type Job {
   updatedAt: DateTime! @updatedAt
   status: Status! @default(value: PENDING)
   shortDescription: String!
+  email: String
 }

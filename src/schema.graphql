@@ -42,6 +42,7 @@ input JobCreateInput {
   city: String!
   categories: [String!]!
   tags: [String]!
+  email: String
 }
 
 type AuthPayload {

@@ -337,7 +337,8 @@ export namespace JobResolvers {
     published_at: (parent: Job) =>
       parent.published_at === undefined ? null : parent.published_at,
     status: (parent: Job) => parent.status,
-    shortDescription: (parent: Job) => parent.shortDescription
+    shortDescription: (parent: Job) => parent.shortDescription,
+    email: (parent: Job) => (parent.email === undefined ? null : parent.email)
   };
 
   export type IdResolver =
@@ -1200,6 +1201,7 @@ export namespace MutationResolvers {
     city: string;
     categories: string[];
     tags: Array<string | null>;
+    email?: string | null;
   }
   export interface ResetPasswordInput {
     resetToken: string;

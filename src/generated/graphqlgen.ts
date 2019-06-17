@@ -59,6 +59,40 @@ export namespace QueryResolvers {
         ) => Array<Job | null> | Promise<Array<Job | null>>;
       };
 
+  export type CategoriesResolver =
+    | ((
+        parent: undefined,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => Array<Category | null> | Promise<Array<Category | null>>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: undefined,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => Array<Category | null> | Promise<Array<Category | null>>;
+      };
+
+  export type TagsResolver =
+    | ((
+        parent: undefined,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => Array<Tag | null> | Promise<Array<Tag | null>>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: undefined,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => Array<Tag | null> | Promise<Array<Tag | null>>;
+      };
+
   export interface Type {
     me:
       | ((
@@ -109,6 +143,40 @@ export namespace QueryResolvers {
             ctx: Context,
             info: GraphQLResolveInfo
           ) => Array<Job | null> | Promise<Array<Job | null>>;
+        };
+
+    categories:
+      | ((
+          parent: undefined,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => Array<Category | null> | Promise<Array<Category | null>>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: undefined,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => Array<Category | null> | Promise<Array<Category | null>>;
+        };
+
+    tags:
+      | ((
+          parent: undefined,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => Array<Tag | null> | Promise<Array<Tag | null>>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: undefined,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => Array<Tag | null> | Promise<Array<Tag | null>>;
         };
   }
 }

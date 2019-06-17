@@ -18,4 +18,10 @@ export const Query: QueryResolvers.Type = {
       where: { status: 'PENDING', published_at_not: null },
     });
   },
+  categories(parent, args, ctx: Context) {
+    return ctx.prisma.categories();
+  },
+  tags(parent, args, ctx: Context) {
+    return ctx.prisma.tags();
+  },
 };

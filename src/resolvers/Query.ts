@@ -27,4 +27,13 @@ export const Query: QueryResolvers.Type = {
   cities(parent, args, ctx: Context) {
     return ctx.prisma.cities();
   },
+  city(parent, { id, name }, ctx: Context) {
+    if (!id && !name) {
+      throw new Error('You need to provide an ID or a name');
+    }
+    if (id) {
+      return ctx.prisma.city({ id });
+    }
+    return ctx.prisma.city({ name });
+  },
 };

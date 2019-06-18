@@ -5,6 +5,7 @@ type Query {
   categories: [Category]!
   tags: [Tag]!
   cities: [City]!
+  city(id: ID, name: String): City
 }
 
 type Mutation {

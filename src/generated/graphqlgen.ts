@@ -8,6 +8,11 @@ import { Context } from "../utils";
 export namespace QueryResolvers {
   export const defaultResolvers = {};
 
+  export interface ArgsCity {
+    id?: string | null;
+    name?: string | null;
+  }
+
   export type MeResolver =
     | ((
         parent: undefined,
@@ -108,6 +113,23 @@ export namespace QueryResolvers {
           ctx: Context,
           info: GraphQLResolveInfo
         ) => Array<City | null> | Promise<Array<City | null>>;
+      };
+
+  export type CityResolver =
+    | ((
+        parent: undefined,
+        args: ArgsCity,
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => City | null | Promise<City | null>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: undefined,
+          args: ArgsCity,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => City | null | Promise<City | null>;
       };
 
   export interface Type {
@@ -211,6 +233,23 @@ export namespace QueryResolvers {
             ctx: Context,
             info: GraphQLResolveInfo
           ) => Array<City | null> | Promise<Array<City | null>>;
+        };
+
+    city:
+      | ((
+          parent: undefined,
+          args: ArgsCity,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => City | null | Promise<City | null>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: undefined,
+            args: ArgsCity,
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => City | null | Promise<City | null>;
         };
   }
 }

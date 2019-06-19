@@ -8,6 +8,10 @@ import { Context } from "../utils";
 export namespace QueryResolvers {
   export const defaultResolvers = {};
 
+  export interface ArgsJob {
+    id: string;
+  }
+
   export interface ArgsCity {
     id?: string | null;
     name?: string | null;
@@ -62,6 +66,23 @@ export namespace QueryResolvers {
           ctx: Context,
           info: GraphQLResolveInfo
         ) => Array<Job | null> | Promise<Array<Job | null>>;
+      };
+
+  export type JobResolver =
+    | ((
+        parent: undefined,
+        args: ArgsJob,
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => Job | null | Promise<Job | null>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: undefined,
+          args: ArgsJob,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => Job | null | Promise<Job | null>;
       };
 
   export type CategoriesResolver =
@@ -182,6 +203,23 @@ export namespace QueryResolvers {
             ctx: Context,
             info: GraphQLResolveInfo
           ) => Array<Job | null> | Promise<Array<Job | null>>;
+        };
+
+    job:
+      | ((
+          parent: undefined,
+          args: ArgsJob,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => Job | null | Promise<Job | null>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: undefined,
+            args: ArgsJob,
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => Job | null | Promise<Job | null>;
         };
 
     categories:

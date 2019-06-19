@@ -36,4 +36,11 @@ export const Query: QueryResolvers.Type = {
     }
     return ctx.prisma.city({ name });
   },
+  async job(parent, { id }, ctx: Context) {
+    const job = await ctx.prisma.job({ id });
+    if (job && job.status === 'APPROVED') {
+      return job;
+    }
+    return null;
+  },
 };

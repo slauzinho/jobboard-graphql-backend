@@ -2,6 +2,7 @@ type Query {
   me: User
   jobs: [Job]!
   pending: [Job]!
+  job(id: ID!): Job
   categories: [Category]!
   tags: [Tag]!
   cities: [City]!

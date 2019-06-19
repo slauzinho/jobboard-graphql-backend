@@ -1,7 +1,6 @@
 import * as jwt from 'jsonwebtoken';
 import { Prisma, User } from './generated/prisma-client';
 import algoliasearch = require('algoliasearch');
-import console = require('console');
 import { string } from 'yup';
 
 export interface Context {
@@ -48,17 +47,19 @@ export function transform(job: any) {
     tags = job.tags.map(tag => tag.name);
   }
   const categories = job.categories.map(cat => cat.name);
-  tags = [...tags, ...categories];
+  tags = [...tags];
 
   return {
     title: job.title,
     company: job.company,
     updated_at: new Date(job.updatedAt).getTime(),
     objectID: job.id,
-    url: job.url.length > 0 ? job.url : null,
-    description: job.description,
+    url: job.url,
+    shortDescription: job.shortDescription,
     slug: job.slug,
-    _tags: tags,
+    categories,
+    techs: tags,
+    _tags: [...tags, ...categories],
     _geoloc: {
       lat: job.city.lat,
       lng: job.city.lng,
@@ -70,7 +71,7 @@ export function transform(job: any) {
 export function makeShortDescription(htmlDescription: string): string {
   const stripedHtml = htmlDescription.replace(/<[^>]+>/g, '');
 
-  return stripedHtml.substring(0, 100) + '...';
+  return stripedHtml.substring(0, 200) + '...';
 }
 
 export function createToken(id: string) {

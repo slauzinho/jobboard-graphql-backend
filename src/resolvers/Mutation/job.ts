@@ -94,6 +94,7 @@ export default {
           id
           title
           updatedAt
+          company
           url
           description
           slug

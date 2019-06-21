@@ -40,6 +40,13 @@ server.express.get(
     res.redirect('/');
   }
 );
+server.express.use('*', (req, res, next) => {
+  const query = req.query || req.body.query || '';
+  if (query.length > 2000) {
+    throw new Error('Query to long');
+  }
+  next();
+});
 
 const options = {
   cors: {
